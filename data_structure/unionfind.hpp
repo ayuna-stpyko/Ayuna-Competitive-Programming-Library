@@ -48,7 +48,7 @@ public:
     for(int i = 0; i < _n; i++) {
       ret[leader(i)].push_back(i);
     }
-    ret.erase(std::remove_if(ret.begin(), ret.end(), [](std::vector<int> a) { return a.size() == 0; }), ret.end());
+    ret.erase(std::remove_if(ret.begin(), ret.end(), [](const std::vector<int> &a) { return a.empty(); }), ret.end());
     return ret;
   }
 
