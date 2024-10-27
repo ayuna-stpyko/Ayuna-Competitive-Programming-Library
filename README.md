@@ -2,6 +2,7 @@
 
 競技プログラミング用のライブラリ
 
+ [![Actions Status](https://github.com/ayuna-stpyko/Ayuna-Competitive-Programming-Library/workflows/verify/badge.svg)](https://github.com/ayuna-stpyko/Ayuna-Competitive-Programming-Library/actions)
 [![Ayuna](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2FAyuna)](https://atcoder.jp/users/Ayuna)
 [![Ayuna](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fcodeforces%2Fjson%2FAyuna)](https://codeforces.com/profile/Ayuna)
 
