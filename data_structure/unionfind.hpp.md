@@ -52,7 +52,7 @@ data:
   isVerificationFile: false
   path: data_structure/unionfind.hpp
   requiredBy: []
-  timestamp: '2024-10-28 03:22:10+09:00'
+  timestamp: '2024-07-08 14:29:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library_Checker/Unionfind.test.cpp
