@@ -12,8 +12,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      with:
-        ref: ${{github.event.pull_request.head.ref}}
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -83,6 +81,23 @@ jobs:
     #     crate: cargo-udeps
     #     version: '0.1.44'
     #     args: --debug
+
+    - name: Debug Git state
+      run: |
+        echo "=== Current branch ==="
+        git branch -v
+        echo "=== Remote branches ==="
+        git branch -rv
+        echo "=== All branches ==="
+        git branch -av
+        echo "=== Current HEAD ==="
+        git log --oneline -5
+        echo "=== Remote origin/main ==="
+        git log --oneline origin/main -5
+        echo "=== Remote origin/gh-pages (if exists) ==="
+        git log --oneline origin/gh-pages -5 || echo "origin/gh-pages not found"
+        echo "=== Local gh-pages (if exists) ==="
+        git log --oneline gh-pages -5 || echo "local gh-pages not found"
 
     - name: Run tests
       env:
