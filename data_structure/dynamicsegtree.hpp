@@ -57,7 +57,7 @@ private:
   }
 
   S get(const node_ptr &t, long long l, long long r, long long p) const {
-    if(t == )
+    if(t == nullptr)
       return e();
     if(r - l == 1)
       return t->value;
