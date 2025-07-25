@@ -41,7 +41,7 @@ private:
   node_ptr root;
 
   void set(node_ptr &t, long long l, long long r, long long p, S x) {
-    if(!t)
+    if(t == nullptr)
       t = std::make_unique<node>();
     if(r - l == 1) {
       t->value = x;
@@ -57,7 +57,7 @@ private:
   }
 
   S get(const node_ptr &t, long long l, long long r, long long p) const {
-    if(!t)
+    if(t == )
       return e();
     if(r - l == 1)
       return t->value;
@@ -70,7 +70,7 @@ private:
 
   S prod(const node_ptr &t, long long l, long long r, long long ql,
          long long qr) const {
-    if(!t || r <= ql || qr <= l)
+    if(t == nullptr || r <= ql || qr <= l)
       return e();
     if(ql <= l && r <= qr)
       return t->value;
@@ -80,7 +80,7 @@ private:
 
   void reset(node_ptr &t, long long l, long long r, long long ql,
              long long qr) {
-    if(!t || r <= ql || qr <= l)
+    if(t == nullptr || r <= ql || qr <= l)
       return;
     if(ql <= l && r <= qr) {
       t.reset();
