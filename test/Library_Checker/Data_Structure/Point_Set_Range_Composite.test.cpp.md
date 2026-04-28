@@ -14,9 +14,9 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
     links:
     - https://judge.yosupo.jp/problem/point_set_range_composite
-  bundledCode: "#line 1 \"test/Library_Checker/Point_Set_Range_Composite.test.cpp\"\
+  bundledCode: "#line 1 \"test/Library_Checker/Data_Structure/Point_Set_Range_Composite.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n\n#include <iostream>\n#line 1 \"data_structure/segmenttree.hpp\"\n#include\
+    \n\n#include <iostream>\n#line 2 \"data_structure/segmenttree.hpp\"\n\n#include\
     \ <cassert>\n#include <vector>\n#include <functional>\n\ntemplate <class S, auto\
     \ op, auto e> struct SegmentTree {\n  SegmentTree(int n) : SegmentTree(std::vector<S>(n,\
     \ e())) {}\n  SegmentTree(const std::vector<S> &v) : _n(v.size()) {\n    size\
@@ -33,7 +33,7 @@ data:
     \ const{\n    return d[1];\n  }\n\nprivate:\n  int _n, size, log;\n  std::vector<S>\
     \ d;\n  void update(int i) { d[i] = op(d[i << 1], d[i << 1 | 1]); }\n\n  unsigned\
     \ int bit_ceil(unsigned int n) {\n    unsigned int x = 1;\n    while (x < (unsigned\
-    \ int)(n)) x <<= 1;\n    return x;\n  }\n};\n#line 5 \"test/Library_Checker/Point_Set_Range_Composite.test.cpp\"\
+    \ int)(n)) x <<= 1;\n    return x;\n  }\n};\n#line 5 \"test/Library_Checker/Data_Structure/Point_Set_Range_Composite.test.cpp\"\
     \nusing namespace std;\nusing ll = long long;\n\nconstexpr ll m93 = 998244353ll;\n\
     pair<ll, ll> op(pair<ll, ll> a, pair<ll, ll> b) { return make_pair(a.first * b.first\
     \ % m93, (a.second * b.first % m93 + b.second) % m93);}\npair<ll, ll> e() { return\
@@ -59,19 +59,19 @@ data:
     \ d;\n        st.set(p, make_pair(c, d));\n        break;\n      }\n      case\
     \ 1:{\n        int l, r;\n        ll x;\n        cin >> l >> r >> x;\n       \
     \ auto [c, d] = st.prod(l, r);\n        cout << (c * x % m93 + d) % m93 << endl;\n\
-    \        break;\n      }\n    }\n  }\n}"
+    \        break;\n      }\n    }\n  }\n}\n"
   dependsOn:
   - data_structure/segmenttree.hpp
   isVerificationFile: true
-  path: test/Library_Checker/Point_Set_Range_Composite.test.cpp
+  path: test/Library_Checker/Data_Structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-11-27 18:01:08+09:00'
+  timestamp: '2026-04-29 01:01:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Library_Checker/Point_Set_Range_Composite.test.cpp
+documentation_of: test/Library_Checker/Data_Structure/Point_Set_Range_Composite.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library_Checker/Point_Set_Range_Composite.test.cpp
-- /verify/test/Library_Checker/Point_Set_Range_Composite.test.cpp.html
-title: test/Library_Checker/Point_Set_Range_Composite.test.cpp
+- /verify/test/Library_Checker/Data_Structure/Point_Set_Range_Composite.test.cpp
+- /verify/test/Library_Checker/Data_Structure/Point_Set_Range_Composite.test.cpp.html
+title: test/Library_Checker/Data_Structure/Point_Set_Range_Composite.test.cpp
 ---

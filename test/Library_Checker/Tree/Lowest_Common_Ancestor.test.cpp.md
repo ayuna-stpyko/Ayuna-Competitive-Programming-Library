@@ -14,8 +14,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
     - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"test/Library_Checker/Lowest_Common_Ancestor.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <iostream>\n\
+  bundledCode: "#line 1 \"test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <iostream>\n\
     #line 1 \"tree/lowestcommonancestor.hpp\"\n#include <vector>\n#include <tuple>\n\
     #include <queue>\n#include <algorithm>\n#include <cassert>\n\nstruct LowestCommonAncestor\
     \ {\npublic:\n  std::vector<std::vector<int>> parents;\n  std::vector<int> depth;\n\
@@ -49,7 +49,7 @@ data:
     \ -= (depth[u] - depth[l]);\n      int d = depth[v] - depth[l];\n      if (d -\
     \ k < 0) return -1;\n      else return la(v, d - k);\n    }\n  }\n\nprivate:\n\
     \  int n;\n  std::vector<std::vector<int>> graph;\n  int r;\n  const int inf =\
-    \ 1 << 29;\n};\n#line 5 \"test/Library_Checker/Lowest_Common_Ancestor.test.cpp\"\
+    \ 1 << 29;\n};\n#line 5 \"test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp\"\
     \nusing namespace std;\n\nint main(){\n  cin.tie(0);\n  ios::sync_with_stdio(0);\n\
     \  int n, q;\n  cin >> n >> q;\n  vector<vector<int>> graph(n);\n  for (int i\
     \ = 1; i < n; i++){\n    int p;\n    cin >> p;\n    graph[i].push_back(p);\n \
@@ -62,19 +62,19 @@ data:
     \ graph(n);\n  for (int i = 1; i < n; i++){\n    int p;\n    cin >> p;\n    graph[i].push_back(p);\n\
     \    graph[p].push_back(i);\n  }\n  LowestCommonAncestor tree(graph);\n  while(q--){\n\
     \    int u, v;\n    cin >> u >> v;\n    cout << tree.lca(u, v) << endl;\n  }\n\
-    }"
+    }\n"
   dependsOn:
   - tree/lowestcommonancestor.hpp
   isVerificationFile: true
-  path: test/Library_Checker/Lowest_Common_Ancestor.test.cpp
+  path: test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2024-10-28 02:38:21+09:00'
+  timestamp: '2026-04-29 01:01:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Library_Checker/Lowest_Common_Ancestor.test.cpp
+documentation_of: test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library_Checker/Lowest_Common_Ancestor.test.cpp
-- /verify/test/Library_Checker/Lowest_Common_Ancestor.test.cpp.html
-title: test/Library_Checker/Lowest_Common_Ancestor.test.cpp
+- /verify/test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
+- /verify/test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp.html
+title: test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
 ---

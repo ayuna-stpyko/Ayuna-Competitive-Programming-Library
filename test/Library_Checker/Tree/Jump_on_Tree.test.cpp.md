@@ -14,10 +14,10 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
     links:
     - https://judge.yosupo.jp/problem/jump_on_tree
-  bundledCode: "#line 1 \"test/Library_Checker/Jump_on_Tree.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/jump_on_tree\"\n\n#include <iostream>\n#line\
-    \ 1 \"tree/lowestcommonancestor.hpp\"\n#include <vector>\n#include <tuple>\n#include\
-    \ <queue>\n#include <algorithm>\n#include <cassert>\n\nstruct LowestCommonAncestor\
+  bundledCode: "#line 1 \"test/Library_Checker/Tree/Jump_on_Tree.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n\n#include <iostream>\n\
+    #line 1 \"tree/lowestcommonancestor.hpp\"\n#include <vector>\n#include <tuple>\n\
+    #include <queue>\n#include <algorithm>\n#include <cassert>\n\nstruct LowestCommonAncestor\
     \ {\npublic:\n  std::vector<std::vector<int>> parents;\n  std::vector<int> depth;\n\
     \  int lg = 0;\n\n  LowestCommonAncestor(std::vector<std::vector<int>> G, int\
     \ root = 0) : graph(G), r(root) {\n    n = G.size();\n    assert(0 <= root &&\
@@ -49,10 +49,10 @@ data:
     \ -= (depth[u] - depth[l]);\n      int d = depth[v] - depth[l];\n      if (d -\
     \ k < 0) return -1;\n      else return la(v, d - k);\n    }\n  }\n\nprivate:\n\
     \  int n;\n  std::vector<std::vector<int>> graph;\n  int r;\n  const int inf =\
-    \ 1 << 29;\n};\n#line 5 \"test/Library_Checker/Jump_on_Tree.test.cpp\"\nusing\
-    \ namespace std;\n\nint main(){\n  cin.tie(0);\n  ios::sync_with_stdio(0);\n \
-    \ int n, q;\n  cin >> n >> q;\n  vector<vector<int>> graph(n);\n  for (int i =\
-    \ 0; i < n - 1; i++){\n    int a, b;\n    cin >> a >> b;\n    graph[a].push_back(b);\n\
+    \ 1 << 29;\n};\n#line 5 \"test/Library_Checker/Tree/Jump_on_Tree.test.cpp\"\n\
+    using namespace std;\n\nint main(){\n  cin.tie(0);\n  ios::sync_with_stdio(0);\n\
+    \  int n, q;\n  cin >> n >> q;\n  vector<vector<int>> graph(n);\n  for (int i\
+    \ = 0; i < n - 1; i++){\n    int a, b;\n    cin >> a >> b;\n    graph[a].push_back(b);\n\
     \    graph[b].push_back(a);\n  }\n\n  LowestCommonAncestor lca(graph);\n\n  while(q--){\n\
     \    int s, t, i;\n    cin >> s >> t >> i;\n    cout << lca.jumpto(s, t, i) <<\
     \ endl;\n  }\n}\n"
@@ -66,15 +66,15 @@ data:
   dependsOn:
   - tree/lowestcommonancestor.hpp
   isVerificationFile: true
-  path: test/Library_Checker/Jump_on_Tree.test.cpp
+  path: test/Library_Checker/Tree/Jump_on_Tree.test.cpp
   requiredBy: []
-  timestamp: '2024-10-28 02:38:21+09:00'
+  timestamp: '2026-04-29 01:01:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Library_Checker/Jump_on_Tree.test.cpp
+documentation_of: test/Library_Checker/Tree/Jump_on_Tree.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library_Checker/Jump_on_Tree.test.cpp
-- /verify/test/Library_Checker/Jump_on_Tree.test.cpp.html
-title: test/Library_Checker/Jump_on_Tree.test.cpp
+- /verify/test/Library_Checker/Tree/Jump_on_Tree.test.cpp
+- /verify/test/Library_Checker/Tree/Jump_on_Tree.test.cpp.html
+title: test/Library_Checker/Tree/Jump_on_Tree.test.cpp
 ---

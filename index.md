@@ -18,28 +18,30 @@ data:
       path: tree/lowestcommonancestor.hpp
       title: tree/lowestcommonancestor.hpp
   verificationCategories:
-  - name: test/Library_Checker
+  - name: test/Library_Checker/Data_Structure
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/Library_Checker/Jump_on_Tree.test.cpp
-      title: test/Library_Checker/Jump_on_Tree.test.cpp
+      path: test/Library_Checker/Data_Structure/Point_Add_Range_Sum.test.cpp
+      title: test/Library_Checker/Data_Structure/Point_Add_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/Library_Checker/Lowest_Common_Ancestor.test.cpp
-      title: test/Library_Checker/Lowest_Common_Ancestor.test.cpp
+      path: test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp
+      title: test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/Library_Checker/Point_Add_Range_Sum.test.cpp
-      title: test/Library_Checker/Point_Add_Range_Sum.test.cpp
+      path: test/Library_Checker/Data_Structure/Point_Set_Range_Composite.test.cpp
+      title: test/Library_Checker/Data_Structure/Point_Set_Range_Composite.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/Library_Checker/Point_Add_Range_Sum2.test.cpp
-      title: test/Library_Checker/Point_Add_Range_Sum2.test.cpp
+      path: test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
+      title: test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/Library_Checker/Point_Set_Range_Composite.test.cpp
-      title: test/Library_Checker/Point_Set_Range_Composite.test.cpp
+      path: test/Library_Checker/Data_Structure/Unionfind.test.cpp
+      title: test/Library_Checker/Data_Structure/Unionfind.test.cpp
+  - name: test/Library_Checker/Tree
+    pages:
     - icon: ':heavy_check_mark:'
-      path: test/Library_Checker/Point_Set_Range_Composite2.test.cpp
-      title: test/Library_Checker/Point_Set_Range_Composite2.test.cpp
+      path: test/Library_Checker/Tree/Jump_on_Tree.test.cpp
+      title: test/Library_Checker/Tree/Jump_on_Tree.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/Library_Checker/Unionfind.test.cpp
-      title: test/Library_Checker/Unionfind.test.cpp
+      path: test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
+      title: test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
 layout: toppage
 ---

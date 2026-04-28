@@ -4,17 +4,17 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Library_Checker/Point_Add_Range_Sum2.test.cpp
-    title: test/Library_Checker/Point_Add_Range_Sum2.test.cpp
+    path: test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp
+    title: test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library_Checker/Point_Set_Range_Composite2.test.cpp
-    title: test/Library_Checker/Point_Set_Range_Composite2.test.cpp
+    path: test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
+    title: test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"data_structure/dynamicsegtree.hpp\"\n#include <cassert>\n\
+  bundledCode: "#line 2 \"data_structure/dynamicsegtree.hpp\"\n\n#include <cassert>\n\
     #include <memory>\n\ntemplate <class S, S (*op)(S, S), S (*e)()>\nclass DynamicSegmentTree\
     \ {\npublic:\n  DynamicSegmentTree(long long _n) : n(_n), root(nullptr) {}\n\n\
     \  void set(long long p, S x) {\n    assert(p < n);\n    set(root, 0, n, p, x);\n\
@@ -46,9 +46,9 @@ data:
     \ >> 1;\n    reset(t->left, l, m, ql, qr);\n    reset(t->right, m, r, ql, qr);\n\
     \    t->value =\n        op(t->left ? t->left->value : e(), t->right ? t->right->value\
     \ : e());\n  }\n};\n"
-  code: "#include <cassert>\n#include <memory>\n\ntemplate <class S, S (*op)(S, S),\
-    \ S (*e)()>\nclass DynamicSegmentTree {\npublic:\n  DynamicSegmentTree(long long\
-    \ _n) : n(_n), root(nullptr) {}\n\n  void set(long long p, S x) {\n    assert(p\
+  code: "#pragma once\n\n#include <cassert>\n#include <memory>\n\ntemplate <class\
+    \ S, S (*op)(S, S), S (*e)()>\nclass DynamicSegmentTree {\npublic:\n  DynamicSegmentTree(long\
+    \ long _n) : n(_n), root(nullptr) {}\n\n  void set(long long p, S x) {\n    assert(p\
     \ < n);\n    set(root, 0, n, p, x);\n  }\n  S get(long long p) const {\n    assert(p\
     \ < n);\n    return get(root, 0, n, p);\n  }\n  S prod(long long l, long long\
     \ r) const {\n    assert(l <= r && r <= n);\n    return prod(root, 0, n, l, r);\n\
@@ -76,16 +76,16 @@ data:
     \ r <= qr) {\n      t.reset();\n      return;\n    }\n    long long m = (l + r)\
     \ >> 1;\n    reset(t->left, l, m, ql, qr);\n    reset(t->right, m, r, ql, qr);\n\
     \    t->value =\n        op(t->left ? t->left->value : e(), t->right ? t->right->value\
-    \ : e());\n  }\n};"
+    \ : e());\n  }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/dynamicsegtree.hpp
   requiredBy: []
-  timestamp: '2025-07-26 00:37:45+09:00'
+  timestamp: '2026-04-28 19:03:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Library_Checker/Point_Add_Range_Sum2.test.cpp
-  - test/Library_Checker/Point_Set_Range_Composite2.test.cpp
+  - test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
+  - test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp
 documentation_of: data_structure/dynamicsegtree.hpp
 layout: document
 redirect_from:

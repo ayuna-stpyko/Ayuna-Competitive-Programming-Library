@@ -14,9 +14,9 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/unionfind
     links:
     - https://judge.yosupo.jp/problem/unionfind
-  bundledCode: "#line 1 \"test/Library_Checker/Unionfind.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/unionfind\"\n\n#include <iostream>\n#line\
-    \ 1 \"data_structure/unionfind.hpp\"\n#include <algorithm>\n#include <cassert>\n\
+  bundledCode: "#line 1 \"test/Library_Checker/Data_Structure/Unionfind.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#include <iostream>\n\
+    #line 2 \"data_structure/unionfind.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
     #include <vector>\n\nstruct UnionFind {\npublic:\n  UnionFind(int N) : _n(N) {\
     \ parent_or_size.resize(_n, -1); }\n\n  int merge(int a, int b) {\n    assert(0\
     \ <= a && a < _n);\n    assert(0 <= b && b < _n);\n    if(same(a, b))\n      return\
@@ -33,7 +33,7 @@ data:
     \      }\n    }\n    for(int i = 0; i < _n; i++) {\n      ret[leader(i)].push_back(i);\n\
     \    }\n    ret.erase(std::remove_if(ret.begin(), ret.end(), [](const std::vector<int>\
     \ &a) { return a.empty(); }), ret.end());\n    return ret;\n  }\n\nprivate:\n\
-    \  const int _n;\n  std::vector<int> parent_or_size;\n};\n#line 5 \"test/Library_Checker/Unionfind.test.cpp\"\
+    \  const int _n;\n  std::vector<int> parent_or_size;\n};\n#line 5 \"test/Library_Checker/Data_Structure/Unionfind.test.cpp\"\
     \nusing namespace std;\n\nint main(){\n  cin.tie(0);\n  ios::sync_with_stdio(0);\n\
     \  int n, q;\n  cin >> n >> q;\n  UnionFind uf(n);\n  while(q--){\n    int t,\
     \ u, v;\n    cin >> t >> u >> v;\n    if (t){\n      if (uf.same(u, v)) cout <<\
@@ -48,15 +48,15 @@ data:
   dependsOn:
   - data_structure/unionfind.hpp
   isVerificationFile: true
-  path: test/Library_Checker/Unionfind.test.cpp
+  path: test/Library_Checker/Data_Structure/Unionfind.test.cpp
   requiredBy: []
-  timestamp: '2024-10-28 02:38:21+09:00'
+  timestamp: '2026-04-29 01:01:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Library_Checker/Unionfind.test.cpp
+documentation_of: test/Library_Checker/Data_Structure/Unionfind.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library_Checker/Unionfind.test.cpp
-- /verify/test/Library_Checker/Unionfind.test.cpp.html
-title: test/Library_Checker/Unionfind.test.cpp
+- /verify/test/Library_Checker/Data_Structure/Unionfind.test.cpp
+- /verify/test/Library_Checker/Data_Structure/Unionfind.test.cpp.html
+title: test/Library_Checker/Data_Structure/Unionfind.test.cpp
 ---

@@ -14,9 +14,9 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
     links:
     - https://judge.yosupo.jp/problem/point_set_range_composite
-  bundledCode: "#line 1 \"test/Library_Checker/Point_Set_Range_Composite2.test.cpp\"\
+  bundledCode: "#line 1 \"test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n\n#include <iostream>\n#line 1 \"data_structure/dynamicsegtree.hpp\"\n#include\
+    \n\n#include <iostream>\n#line 2 \"data_structure/dynamicsegtree.hpp\"\n\n#include\
     \ <cassert>\n#include <memory>\n\ntemplate <class S, S (*op)(S, S), S (*e)()>\n\
     class DynamicSegmentTree {\npublic:\n  DynamicSegmentTree(long long _n) : n(_n),\
     \ root(nullptr) {}\n\n  void set(long long p, S x) {\n    assert(p < n);\n   \
@@ -47,7 +47,7 @@ data:
     \ r <= qr) {\n      t.reset();\n      return;\n    }\n    long long m = (l + r)\
     \ >> 1;\n    reset(t->left, l, m, ql, qr);\n    reset(t->right, m, r, ql, qr);\n\
     \    t->value =\n        op(t->left ? t->left->value : e(), t->right ? t->right->value\
-    \ : e());\n  }\n};\n#line 5 \"test/Library_Checker/Point_Set_Range_Composite2.test.cpp\"\
+    \ : e());\n  }\n};\n#line 5 \"test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp\"\
     \nusing namespace std;\nusing ll = long long;\n\nconstexpr ll m93 = 998244353ll;\n\
     pair<ll, ll> op(pair<ll, ll> a, pair<ll, ll> b) { return make_pair(a.first * b.first\
     \ % m93, (a.second * b.first % m93 + b.second) % m93);}\npair<ll, ll> e() { return\
@@ -73,19 +73,19 @@ data:
     \ >> p >> c >> d;\n        st.set(p, make_pair(c, d));\n        break;\n     \
     \ }\n      case 1:{\n        int l, r;\n        ll x;\n        cin >> l >> r >>\
     \ x;\n        auto [c, d] = st.prod(l, r);\n        cout << (c * x % m93 + d)\
-    \ % m93 << endl;\n        break;\n      }\n    }\n  }\n}"
+    \ % m93 << endl;\n        break;\n      }\n    }\n  }\n}\n"
   dependsOn:
   - data_structure/dynamicsegtree.hpp
   isVerificationFile: true
-  path: test/Library_Checker/Point_Set_Range_Composite2.test.cpp
+  path: test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
   requiredBy: []
-  timestamp: '2025-07-26 00:37:45+09:00'
+  timestamp: '2026-04-29 01:01:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Library_Checker/Point_Set_Range_Composite2.test.cpp
+documentation_of: test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library_Checker/Point_Set_Range_Composite2.test.cpp
-- /verify/test/Library_Checker/Point_Set_Range_Composite2.test.cpp.html
-title: test/Library_Checker/Point_Set_Range_Composite2.test.cpp
+- /verify/test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
+- /verify/test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp.html
+title: test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
 ---

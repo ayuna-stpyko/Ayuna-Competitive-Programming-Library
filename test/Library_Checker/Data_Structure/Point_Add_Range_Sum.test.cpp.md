@@ -14,9 +14,9 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
     links:
     - https://judge.yosupo.jp/problem/point_add_range_sum
-  bundledCode: "#line 1 \"test/Library_Checker/Point_Add_Range_Sum.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n#include\
-    \ <iostream>\n#line 1 \"data_structure/segmenttree.hpp\"\n#include <cassert>\n\
+  bundledCode: "#line 1 \"test/Library_Checker/Data_Structure/Point_Add_Range_Sum.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n\
+    #include <iostream>\n#line 2 \"data_structure/segmenttree.hpp\"\n\n#include <cassert>\n\
     #include <vector>\n#include <functional>\n\ntemplate <class S, auto op, auto e>\
     \ struct SegmentTree {\n  SegmentTree(int n) : SegmentTree(std::vector<S>(n, e()))\
     \ {}\n  SegmentTree(const std::vector<S> &v) : _n(v.size()) {\n    size = bit_ceil((unsigned\
@@ -33,15 +33,15 @@ data:
     \ d[1];\n  }\n\nprivate:\n  int _n, size, log;\n  std::vector<S> d;\n  void update(int\
     \ i) { d[i] = op(d[i << 1], d[i << 1 | 1]); }\n\n  unsigned int bit_ceil(unsigned\
     \ int n) {\n    unsigned int x = 1;\n    while (x < (unsigned int)(n)) x <<= 1;\n\
-    \    return x;\n  }\n};\n#line 5 \"test/Library_Checker/Point_Add_Range_Sum.test.cpp\"\
+    \    return x;\n  }\n};\n#line 5 \"test/Library_Checker/Data_Structure/Point_Add_Range_Sum.test.cpp\"\
     \nusing namespace std;\nusing ll = long long;\n\nll op(ll a, ll b) { return a\
     \ + b;}\nll e() { return 0;}\n\nint main() {\n  cin.tie(0);\n  ios::sync_with_stdio(0);\n\
     \  int n, q;\n  cin >> n >> q;\n  vector<ll> a(n);\n  for (ll &i: a) cin >> i;\n\
     \  SegmentTree<ll, op, e> st(a);\n  while (q--) {\n    int num;\n    cin >> num;\n\
     \    switch (num) {\n    case 0:\n      int p;\n      ll x;\n      cin >> p >>\
-    \ x;\n      st.set(p, st.get(p) + x);\n      break;\n    \n    case 1:\n     \
-    \ int l, r;\n      cin >> l >> r;\n      cout << st.prod(l, r) << endl;\n    \
-    \  break;\n    }\n  }\n}\n"
+    \ x;\n      st.set(p, st.get(p) + x);\n      break;\n\n    case 1:\n      int\
+    \ l, r;\n      cin >> l >> r;\n      cout << st.prod(l, r) << endl;\n      break;\n\
+    \    }\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     \n#include <iostream>\n#include \"data_structure/segmenttree.hpp\"\nusing namespace\
     \ std;\nusing ll = long long;\n\nll op(ll a, ll b) { return a + b;}\nll e() {\
@@ -49,21 +49,20 @@ data:
     \ n, q;\n  cin >> n >> q;\n  vector<ll> a(n);\n  for (ll &i: a) cin >> i;\n  SegmentTree<ll,\
     \ op, e> st(a);\n  while (q--) {\n    int num;\n    cin >> num;\n    switch (num)\
     \ {\n    case 0:\n      int p;\n      ll x;\n      cin >> p >> x;\n      st.set(p,\
-    \ st.get(p) + x);\n      break;\n    \n    case 1:\n      int l, r;\n      cin\
-    \ >> l >> r;\n      cout << st.prod(l, r) << endl;\n      break;\n    }\n  }\n\
-    }"
+    \ st.get(p) + x);\n      break;\n\n    case 1:\n      int l, r;\n      cin >>\
+    \ l >> r;\n      cout << st.prod(l, r) << endl;\n      break;\n    }\n  }\n}\n"
   dependsOn:
   - data_structure/segmenttree.hpp
   isVerificationFile: true
-  path: test/Library_Checker/Point_Add_Range_Sum.test.cpp
+  path: test/Library_Checker/Data_Structure/Point_Add_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-11-27 18:01:08+09:00'
+  timestamp: '2026-04-29 01:01:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Library_Checker/Point_Add_Range_Sum.test.cpp
+documentation_of: test/Library_Checker/Data_Structure/Point_Add_Range_Sum.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library_Checker/Point_Add_Range_Sum.test.cpp
-- /verify/test/Library_Checker/Point_Add_Range_Sum.test.cpp.html
-title: test/Library_Checker/Point_Add_Range_Sum.test.cpp
+- /verify/test/Library_Checker/Data_Structure/Point_Add_Range_Sum.test.cpp
+- /verify/test/Library_Checker/Data_Structure/Point_Add_Range_Sum.test.cpp.html
+title: test/Library_Checker/Data_Structure/Point_Add_Range_Sum.test.cpp
 ---
