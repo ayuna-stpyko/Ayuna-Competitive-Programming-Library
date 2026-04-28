@@ -26,7 +26,7 @@ int main() {
       cin >> p >> x;
       st.set(p, st.get(p) + x);
       break;
-    
+
     case 1:
       int l, r;
       cin >> l >> r;
