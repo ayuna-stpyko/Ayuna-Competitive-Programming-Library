@@ -39,12 +39,7 @@ struct NTTFriendlyFormalPowerSeries
   }
 
   static constexpr uint32_t mod = mint::mod();
-#ifdef AYUNA_USE_ACL
-  static constexpr mint primitive_root =
-      mint(atcoder::internal::primitive_root_constexpr((int)mod));
-#else
-  static constexpr mint primitive_root = primitive_root_constexpr(mod);
-#endif
+  static constexpr int primitive_root = primitive_root_constexpr(mod);
   static constexpr int level = std::countr_zero((uint32_t)(mod - 1));
   static_assert(level >= 3, "NTTFriendlyFormalPowerSeries requires v2(mod-1) "
                             ">= 3 (NTT-friendly prime).");
@@ -52,7 +47,7 @@ struct NTTFriendlyFormalPowerSeries
 
   void setwy(int k) {
     mint w[level], y[level];
-    w[k - 1] = primitive_root.pow((mod - 1) / (1 << k));
+    w[k - 1] = mint(primitive_root).pow((mod - 1) / (1 << k));
     y[k - 1] = w[k - 1].inv();
     for(int i = k - 2; i > 0; i--) {
       w[i] = w[i + 1] * w[i + 1];
@@ -230,7 +225,7 @@ struct NTTFriendlyFormalPowerSeries
     const int M = int(a.size());
     auto b = a;
     intt(b);
-    mint r = 1, zeta = primitive_root.pow((mod - 1) / (M << 1));
+    mint r = 1, zeta = mint(primitive_root).pow((mod - 1) / (M << 1));
     for(int i = 0; i < M; i++) {
       b[i] *= r;
       r *= zeta;
