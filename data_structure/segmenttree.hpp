@@ -4,6 +4,8 @@
 #include <vector>
 #include <functional>
 
+namespace ayuna {
+
 template <class S, auto op, auto e> struct SegmentTree {
   SegmentTree(int n) : SegmentTree(std::vector<S>(n, e())) {}
   SegmentTree(const std::vector<S> &v) : _n(v.size()) {
@@ -55,3 +57,5 @@ private:
     return x;
   }
 };
+
+} // namespace ayuna

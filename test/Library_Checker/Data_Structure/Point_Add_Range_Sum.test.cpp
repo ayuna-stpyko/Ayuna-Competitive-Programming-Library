@@ -15,7 +15,7 @@ int main() {
   cin >> n >> q;
   vector<ll> a(n);
   for (ll &i: a) cin >> i;
-  SegmentTree<ll, op, e> st(a);
+  ayuna::SegmentTree<ll, op, e> st(a);
   while (q--) {
     int num;
     cin >> num;

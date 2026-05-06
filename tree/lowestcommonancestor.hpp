@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <cassert>
 
+namespace ayuna {
+
 struct LowestCommonAncestor {
 public:
   std::vector<std::vector<int>> parents;
@@ -109,3 +111,5 @@ private:
   int r;
   const int inf = 1 << 29;
 };
+
+} // namespace ayuna
