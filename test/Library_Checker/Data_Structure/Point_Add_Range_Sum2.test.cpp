@@ -16,7 +16,7 @@ int main() {
   cin >> n >> q;
   vector<ll> a(n);
   for (ll &i: a) cin >> i;
-  DynamicSegmentTree<ll, op, e> st(n);
+  ayuna::DynamicSegmentTree<ll, op, e> st(n);
   for (int i = 0; i < n; i++) st.set(i, a[i]);
   while (q--) {
     int num;

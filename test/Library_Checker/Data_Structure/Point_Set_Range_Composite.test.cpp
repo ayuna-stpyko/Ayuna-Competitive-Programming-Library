@@ -14,7 +14,7 @@ int main() {
   ios::sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  SegmentTree<pair<ll, ll>, op, e> st(n);
+  ayuna::SegmentTree<pair<ll, ll>, op, e> st(n);
   for (int i = 0; i < n; i++) {
     int c, d;
     cin >> c >> d;

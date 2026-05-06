@@ -3,6 +3,8 @@
 #include <cassert>
 #include <memory>
 
+namespace ayuna {
+
 template <class S, S (*op)(S, S), S (*e)()>
 class DynamicSegmentTree {
 public:
@@ -95,3 +97,5 @@ private:
         op(t->left ? t->left->value : e(), t->right ? t->right->value : e());
   }
 };
+
+} // namespace ayuna

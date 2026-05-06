@@ -17,7 +17,7 @@ int main(){
     graph[b].push_back(a);
   }
 
-  LowestCommonAncestor lca(graph);
+  ayuna::LowestCommonAncestor lca(graph);
 
   while(q--){
     int s, t, i;

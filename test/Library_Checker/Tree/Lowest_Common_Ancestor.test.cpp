@@ -16,7 +16,7 @@ int main(){
     graph[i].push_back(p);
     graph[p].push_back(i);
   }
-  LowestCommonAncestor tree(graph);
+  ayuna::LowestCommonAncestor tree(graph);
   while(q--){
     int u, v;
     cin >> u >> v;

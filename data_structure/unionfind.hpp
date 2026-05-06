@@ -4,6 +4,8 @@
 #include <cassert>
 #include <vector>
 
+namespace ayuna {
+
 struct UnionFind {
 public:
   UnionFind(int N) : _n(N) { parent_or_size.resize(_n, -1); }
@@ -58,3 +60,5 @@ private:
   const int _n;
   std::vector<int> parent_or_size;
 };
+
+} // namespace ayuna

@@ -9,7 +9,7 @@ int main(){
   ios::sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
-  UnionFind uf(n);
+  ayuna::UnionFind uf(n);
   while(q--){
     int t, u, v;
     cin >> t >> u >> v;
