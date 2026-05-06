@@ -9,6 +9,8 @@
 #include <numeric>
 #include <vector>
 
+namespace ayuna {
+
 template <typename mint>
 struct NTTFriendlyFormalPowerSeries
     : FormalPowerSeriesBase<mint, NTTFriendlyFormalPowerSeries<mint>> {
@@ -37,7 +39,12 @@ struct NTTFriendlyFormalPowerSeries
   }
 
   static constexpr uint32_t mod = mint::mod();
+#ifdef AYUNA_USE_ACL
+  static constexpr mint primitive_root =
+      mint(atcoder::internal::primitive_root_constexpr((int)mod));
+#else
   static constexpr mint primitive_root = primitive_root_constexpr(mod);
+#endif
   static constexpr int level = std::countr_zero((uint32_t)(mod - 1));
   static_assert(level >= 3, "NTTFriendlyFormalPowerSeries requires v2(mod-1) "
                             ">= 3 (NTT-friendly prime).");
@@ -232,3 +239,5 @@ struct NTTFriendlyFormalPowerSeries
     std::copy(std::begin(b), std::end(b), std::back_inserter(a));
   }
 };
+
+} // namespace ayuna

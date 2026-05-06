@@ -12,7 +12,7 @@ int main() {
   int n;
   long long m;
   cin >> n >> m;
-  FormalPowerSeries<modint998244353> f(n);
+  ayuna::FormalPowerSeries<ayuna::modint998244353> f(n);
   for (int i = 0; i < n; i++) {
     int a;
     cin >> a;

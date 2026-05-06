@@ -6,6 +6,8 @@
 #include <type_traits>
 #include <utility>
 
+namespace ayuna {
+
 using ll = long long;
 using ull = unsigned long long;
 using u32 = unsigned int;
@@ -105,3 +107,5 @@ public:
 
 using modint998244353 = modint<998244353>;
 using modint1000000007 = modint<1000000007>;
+
+} // namespace ayuna

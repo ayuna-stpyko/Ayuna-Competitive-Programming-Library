@@ -11,7 +11,7 @@ int main() {
   ios::sync_with_stdio(0);
   int n;
   cin >> n;
-  NTTFriendlyFormalPowerSeries<modint998244353> f(n);
+  ayuna::NTTFriendlyFormalPowerSeries<ayuna::modint998244353> f(n);
   for (int i = 0; i < n; i++) {
     int a;
     cin >> a;

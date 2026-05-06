@@ -5,9 +5,12 @@
 #include <array>
 #include <bit>
 #include <cassert>
+#include <concepts>
 #include <type_traits>
 #include <utility>
 #include <vector>
+
+namespace ayuna {
 
 constexpr long long safe_mod(long long x, long long m) {
   x %= m;
@@ -256,12 +259,12 @@ std::vector<mint> convolution_fft(std::vector<mint> a, std::vector<mint> b) {
     return {};
   int z = (int)std::bit_ceil((unsigned int)(n + m - 1));
   a.resize(z);
-  butterfly(a);
+  ayuna::butterfly(a);
   b.resize(z);
-  butterfly(b);
+  ayuna::butterfly(b);
   for(int i = 0; i < z; i++)
     a[i] *= b[i];
-  butterfly_inv(a);
+  ayuna::butterfly_inv(a);
   a.resize(n + m - 1);
   mint iz = mint(z).inv();
   for(int i = 0; i < n + m - 1; i++)
@@ -275,6 +278,9 @@ static std::vector<mint> convolution_arbitrary_mod(const std::vector<mint> &a,
   using m1 = modint<167772161>;  // 2^25 * 5 + 1
   using m2 = modint<469762049>;  // 2^26 * 7 + 1
   using m3 = modint<1224736769>; // 2^24 * 73 + 1
+  static_assert(StaticModint<m1>);
+  static_assert(StaticModint<m2>);
+  static_assert(StaticModint<m3>);
 
   const int n = (int)a.size(), m = (int)b.size();
   std::vector<m1> a1(n), b1(m);
@@ -293,9 +299,9 @@ static std::vector<mint> convolution_arbitrary_mod(const std::vector<mint> &a,
     b3[i] = v;
   }
 
-  const auto c1 = convolution_fft(std::move(a1), std::move(b1));
-  const auto c2 = convolution_fft(std::move(a2), std::move(b2));
-  const auto c3 = convolution_fft(std::move(a3), std::move(b3));
+  const auto c1 = ayuna::convolution_fft(std::move(a1), std::move(b1));
+  const auto c2 = ayuna::convolution_fft(std::move(a2), std::move(b2));
+  const auto c3 = ayuna::convolution_fft(std::move(a3), std::move(b3));
 
   static constexpr unsigned long long M1 = m1::mod();
   static constexpr unsigned long long M2 = m2::mod();
@@ -337,8 +343,132 @@ std::vector<mint> convolution(std::vector<mint> &&a, std::vector<mint> &&b) {
     return {};
   const int z = (int)std::bit_ceil((unsigned int)(n + m - 1));
   if(std::min(n, m) <= 60)
-    return convolution_naive(a, b);
+    return ayuna::convolution_naive(a, b);
   if((mint::mod() - 1) % z == 0)
-    return convolution_fft(std::move(a), std::move(b));
-  return convolution_arbitrary_mod<mint>(a, b);
+    return ayuna::convolution_fft(std::move(a), std::move(b));
+  return ayuna::convolution_arbitrary_mod<mint>(a, b);
 }
+
+// -------------------------
+// Bitwise Convolutions (FWT)
+// -------------------------
+
+template <StaticModint mint>
+static void hadamard_transform(std::vector<mint> &a) {
+  const int n = (int)a.size();
+  for(int len = 1; len < n; len <<= 1) {
+    for(int i = 0; i < n; i += (len << 1)) {
+      for(int j = 0; j < len; j++) {
+        const mint u = a[i + j];
+        const mint v = a[i + j + len];
+        a[i + j] = u + v;
+        a[i + j + len] = u - v;
+      }
+    }
+  }
+}
+
+template <StaticModint mint>
+static void hadamard_transform_inv(std::vector<mint> &a) {
+  hadamard_transform(a);
+  const mint inv_n = mint((int)a.size()).inv();
+  for(auto &x : a)
+    x *= inv_n;
+}
+
+template <StaticModint mint>
+std::vector<mint> xor_convolution(std::vector<mint> a, std::vector<mint> b) {
+  const int n = (int)a.size();
+  assert(n == (int)b.size());
+  if(n == 0)
+    return {};
+  assert(std::has_single_bit((unsigned int)n));
+  hadamard_transform(a);
+  hadamard_transform(b);
+  for(int i = 0; i < n; i++)
+    a[i] *= b[i];
+  hadamard_transform_inv(a);
+  return a;
+}
+
+template <StaticModint mint>
+static void and_transform(std::vector<mint> &a) {
+  const int n = (int)a.size();
+  for(int len = 1; len < n; len <<= 1) {
+    for(int i = 0; i < n; i += (len << 1)) {
+      for(int j = 0; j < len; j++) {
+        // f[S] += f[S \ {bit}]
+        a[i + j] += a[i + j + len];
+      }
+    }
+  }
+}
+
+template <StaticModint mint>
+static void and_transform_inv(std::vector<mint> &a) {
+  const int n = (int)a.size();
+  for(int len = 1; len < n; len <<= 1) {
+    for(int i = 0; i < n; i += (len << 1)) {
+      for(int j = 0; j < len; j++) {
+        a[i + j] -= a[i + j + len];
+      }
+    }
+  }
+}
+
+template <StaticModint mint>
+std::vector<mint> and_convolution(std::vector<mint> a, std::vector<mint> b) {
+  const int n = (int)a.size();
+  assert(n == (int)b.size());
+  if(n == 0)
+    return {};
+  assert(std::has_single_bit((unsigned int)n));
+  and_transform(a);
+  and_transform(b);
+  for(int i = 0; i < n; i++)
+    a[i] *= b[i];
+  and_transform_inv(a);
+  return a;
+}
+
+template <StaticModint mint>
+static void or_transform(std::vector<mint> &a) {
+  const int n = (int)a.size();
+  for(int len = 1; len < n; len <<= 1) {
+    for(int i = 0; i < n; i += (len << 1)) {
+      for(int j = 0; j < len; j++) {
+        // f[S ∪ {bit}] += f[S]
+        a[i + j + len] += a[i + j];
+      }
+    }
+  }
+}
+
+template <StaticModint mint>
+static void or_transform_inv(std::vector<mint> &a) {
+  const int n = (int)a.size();
+  for(int len = 1; len < n; len <<= 1) {
+    for(int i = 0; i < n; i += (len << 1)) {
+      for(int j = 0; j < len; j++) {
+        a[i + j + len] -= a[i + j];
+      }
+    }
+  }
+}
+
+template <StaticModint mint>
+std::vector<mint> or_convolution(std::vector<mint> a, std::vector<mint> b) {
+  const int n = (int)a.size();
+  assert(n == (int)b.size());
+  if(n == 0)
+    return {};
+  assert(std::has_single_bit((unsigned int)n));
+  or_transform(a);
+  or_transform(b);
+  for(int i = 0; i < n; i++)
+    a[i] *= b[i];
+  or_transform_inv(a);
+  return a;
+}
+
+} // namespace ayuna

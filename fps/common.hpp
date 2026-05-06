@@ -9,6 +9,8 @@
 #include <type_traits>
 #include <vector>
 
+namespace ayuna {
+
 template <typename mint, class Derived>
 struct FormalPowerSeriesBase : std::vector<mint> {
   using std::vector<mint>::vector;
@@ -243,10 +245,12 @@ struct FormalPowerSeries
       this->clear();
       return *this;
     }
-    auto result = convolution(std::vector<mint>(*this), std::vector<mint>(r));
+    auto result = ayuna::convolution(std::vector<mint>(*this), std::vector<mint>(r));
     this->assign(result.begin(), result.end());
     return *this;
   }
 
   FPS operator*(const FPS &r) const { return FPS(*this) *= r; }
 };
+
+} // namespace ayuna

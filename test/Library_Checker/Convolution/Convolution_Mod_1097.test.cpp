@@ -11,7 +11,7 @@ int main() {
   ios::sync_with_stdio(0);
   int n, m;
   cin >> n >> m;
-  FormalPowerSeries<modint1000000007> a(n), b(m);
+  ayuna::FormalPowerSeries<ayuna::modint1000000007> a(n), b(m);
   for (int i = 0; i < n; i++) {
     int k;
     cin >> k;
@@ -22,7 +22,7 @@ int main() {
     cin >> k;
     b[i] = k;
   }
-  a *= b;
+  a *= ayuna::FormalPowerSeries<ayuna::modint1000000007>(b);
   for (int i = 0; i < n + m - 1; i++) {
     if (i) cout << " ";
     cout << a[i].val();
