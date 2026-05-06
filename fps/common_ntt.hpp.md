@@ -15,10 +15,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
     title: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
     title: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
     title: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
   - icon: ':x:'

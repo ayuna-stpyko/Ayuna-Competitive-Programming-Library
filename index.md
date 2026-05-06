@@ -30,7 +30,7 @@ data:
       title: math/modint_static.hpp
   - name: tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/lowestcommonancestor.hpp
       title: tree/lowestcommonancestor.hpp
   verificationCategories:
@@ -70,16 +70,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
       title: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series.test.cpp
       title: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
       title: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series.test.cpp
       title: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
       title: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
     - icon: ':x:'
@@ -90,10 +90,10 @@ data:
       title: test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series2.test.cpp
   - name: test/Library_Checker/Tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Tree/Jump_on_Tree.test.cpp
       title: test/Library_Checker/Tree/Jump_on_Tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
       title: test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
 layout: toppage

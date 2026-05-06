@@ -17,9 +17,9 @@ data:
   bundledCode: "#line 1 \"test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n\
     #include <iostream>\n#include <vector>\n#line 2 \"data_structure/dynamicsegtree.hpp\"\
-    \n\n#include <cassert>\n#include <memory>\n\ntemplate <class S, S (*op)(S, S),\
-    \ S (*e)()>\nclass DynamicSegmentTree {\npublic:\n  DynamicSegmentTree(long long\
-    \ _n) : n(_n), root(nullptr) {}\n\n  void set(long long p, S x) {\n    assert(p\
+    \n\n#include <cassert>\n#include <memory>\n\nnamespace ayuna {\n\ntemplate <class\
+    \ S, S (*op)(S, S), S (*e)()>\nclass DynamicSegmentTree {\npublic:\n  DynamicSegmentTree(long\
+    \ long _n) : n(_n), root(nullptr) {}\n\n  void set(long long p, S x) {\n    assert(p\
     \ < n);\n    set(root, 0, n, p, x);\n  }\n  S get(long long p) const {\n    assert(p\
     \ < n);\n    return get(root, 0, n, p);\n  }\n  S prod(long long l, long long\
     \ r) const {\n    assert(l <= r && r <= n);\n    return prod(root, 0, n, l, r);\n\
@@ -47,31 +47,33 @@ data:
     \ r <= qr) {\n      t.reset();\n      return;\n    }\n    long long m = (l + r)\
     \ >> 1;\n    reset(t->left, l, m, ql, qr);\n    reset(t->right, m, r, ql, qr);\n\
     \    t->value =\n        op(t->left ? t->left->value : e(), t->right ? t->right->value\
-    \ : e());\n  }\n};\n#line 6 \"test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp\"\
+    \ : e());\n  }\n};\n\n} // namespace ayuna\n#line 6 \"test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp\"\
     \nusing namespace std;\nusing ll = long long;\n\nll op(ll a, ll b) { return a\
     \ + b;}\nll e() { return 0;}\n\nint main() {\n  cin.tie(0);\n  ios::sync_with_stdio(0);\n\
     \  int n, q;\n  cin >> n >> q;\n  vector<ll> a(n);\n  for (ll &i: a) cin >> i;\n\
-    \  DynamicSegmentTree<ll, op, e> st(n);\n  for (int i = 0; i < n; i++) st.set(i,\
-    \ a[i]);\n  while (q--) {\n    int num;\n    cin >> num;\n    switch (num) {\n\
-    \    case 0:\n      int p;\n      ll x;\n      cin >> p >> x;\n      st.set(p,\
-    \ st.get(p) + x);\n      break;\n\n    case 1:\n      int l, r;\n      cin >>\
-    \ l >> r;\n      cout << st.prod(l, r) << endl;\n      break;\n    }\n  }\n}\n"
+    \  ayuna::DynamicSegmentTree<ll, op, e> st(n);\n  for (int i = 0; i < n; i++)\
+    \ st.set(i, a[i]);\n  while (q--) {\n    int num;\n    cin >> num;\n    switch\
+    \ (num) {\n    case 0:\n      int p;\n      ll x;\n      cin >> p >> x;\n    \
+    \  st.set(p, st.get(p) + x);\n      break;\n\n    case 1:\n      int l, r;\n \
+    \     cin >> l >> r;\n      cout << st.prod(l, r) << endl;\n      break;\n   \
+    \ }\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     \n#include <iostream>\n#include <vector>\n#include \"data_structure/dynamicsegtree.hpp\"\
     \nusing namespace std;\nusing ll = long long;\n\nll op(ll a, ll b) { return a\
     \ + b;}\nll e() { return 0;}\n\nint main() {\n  cin.tie(0);\n  ios::sync_with_stdio(0);\n\
     \  int n, q;\n  cin >> n >> q;\n  vector<ll> a(n);\n  for (ll &i: a) cin >> i;\n\
-    \  DynamicSegmentTree<ll, op, e> st(n);\n  for (int i = 0; i < n; i++) st.set(i,\
-    \ a[i]);\n  while (q--) {\n    int num;\n    cin >> num;\n    switch (num) {\n\
-    \    case 0:\n      int p;\n      ll x;\n      cin >> p >> x;\n      st.set(p,\
-    \ st.get(p) + x);\n      break;\n\n    case 1:\n      int l, r;\n      cin >>\
-    \ l >> r;\n      cout << st.prod(l, r) << endl;\n      break;\n    }\n  }\n}\n"
+    \  ayuna::DynamicSegmentTree<ll, op, e> st(n);\n  for (int i = 0; i < n; i++)\
+    \ st.set(i, a[i]);\n  while (q--) {\n    int num;\n    cin >> num;\n    switch\
+    \ (num) {\n    case 0:\n      int p;\n      ll x;\n      cin >> p >> x;\n    \
+    \  st.set(p, st.get(p) + x);\n      break;\n\n    case 1:\n      int l, r;\n \
+    \     cin >> l >> r;\n      cout << st.prod(l, r) << endl;\n      break;\n   \
+    \ }\n  }\n}\n"
   dependsOn:
   - data_structure/dynamicsegtree.hpp
   isVerificationFile: true
   path: test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp
   requiredBy: []
-  timestamp: '2026-04-29 01:01:20+09:00'
+  timestamp: '2026-05-07 01:17:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp

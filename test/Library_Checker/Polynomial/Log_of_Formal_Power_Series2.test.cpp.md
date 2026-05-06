@@ -15,9 +15,9 @@ data:
     title: math/modint_static.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
@@ -423,7 +423,7 @@ data:
   path: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
   requiredBy: []
   timestamp: '2026-05-07 00:37:36+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
 layout: document
