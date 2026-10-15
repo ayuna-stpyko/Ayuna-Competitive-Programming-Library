@@ -89,8 +89,8 @@ data:
   timestamp: '2026-05-07 01:17:17+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/Library_Checker/Tree/Jump_on_Tree.test.cpp
   - test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
+  - test/Library_Checker/Tree/Jump_on_Tree.test.cpp
 documentation_of: tree/lowestcommonancestor.hpp
 layout: document
 redirect_from:

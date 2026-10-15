@@ -85,8 +85,8 @@ data:
   timestamp: '2026-05-07 01:17:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp
   - test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
+  - test/Library_Checker/Data_Structure/Point_Add_Range_Sum2.test.cpp
 documentation_of: data_structure/dynamicsegtree.hpp
 layout: document
 redirect_from:

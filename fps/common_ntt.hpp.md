@@ -504,10 +504,10 @@ data:
   timestamp: '2026-05-07 00:37:36+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
   - test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series2.test.cpp
   - test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
   - test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
+  - test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
 documentation_of: fps/common_ntt.hpp
 layout: document
 redirect_from:

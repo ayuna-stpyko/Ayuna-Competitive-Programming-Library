@@ -39,7 +39,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
     title: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series.test.cpp
   - icon: ':x:'
@@ -444,17 +444,17 @@ data:
   timestamp: '2026-05-07 00:37:36+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/Library_Checker/Convolution/Bitwise_Xor_Convolution.test.cpp
-  - test/Library_Checker/Convolution/Bitwise_And_Convolution.test.cpp
-  - test/Library_Checker/Convolution/Convolution_Mod_1097.test.cpp
-  - test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
-  - test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/Library_Checker/Polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series2.test.cpp
+  - test/Library_Checker/Polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
   - test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
+  - test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
+  - test/Library_Checker/Convolution/Bitwise_And_Convolution.test.cpp
+  - test/Library_Checker/Convolution/Convolution_Mod_1097.test.cpp
+  - test/Library_Checker/Convolution/Bitwise_Xor_Convolution.test.cpp
 documentation_of: math/convolution.hpp
 layout: document
 redirect_from:
