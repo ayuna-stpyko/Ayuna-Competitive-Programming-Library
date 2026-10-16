@@ -20,7 +20,7 @@ public:
     int x = leader(a), y = leader(b);
     parent_or_size[x] += parent_or_size[y];
     parent_or_size[y] = x;
-    return a;
+    return x;
   }
 
   bool same(const int a, const int b) {
