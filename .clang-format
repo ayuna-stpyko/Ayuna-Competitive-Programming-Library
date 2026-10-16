@@ -1,0 +1,9 @@
+BasedOnStyle: LLVM
+BreakBeforeBraces: Custom
+BraceWrapping:
+  BeforeElse: true
+IndentWidth: 2
+AllowShortIfStatementsOnASingleLine: false
+InsertNewlineAtEOF: true
+LineEnding: LF
+ColumnLimit: 0

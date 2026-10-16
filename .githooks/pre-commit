@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(git rev-parse --show-toplevel)"
+cd "${ROOT_DIR}"
+
+mapfile -t files < <(git diff --cached --name-only --diff-filter=ACMR -- '*.hpp' '*.cpp' '*.cc' '*.cxx')
+
+if [[ "${#files[@]}" -eq 0 ]]; then
+  exit 0
+fi
+
+if ! command -v clang-format >/dev/null 2>&1; then
+  echo "pre-commit: clang-format not found." >&2
+  exit 1
+fi
+
+if ! clang-format --dry-run --Werror "${files[@]}"; then
+  echo "Run: clang-format -i ${files[*]}" >&2
+  exit 1
+fi
