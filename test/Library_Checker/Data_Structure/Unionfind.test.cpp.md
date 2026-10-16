@@ -22,7 +22,7 @@ data:
     \    assert(0 <= a && a < _n);\n    assert(0 <= b && b < _n);\n    if (same(a,\
     \ b))\n      return leader(a);\n    if (size(a) < size(b))\n      std::swap(a,\
     \ b);\n    int x = leader(a), y = leader(b);\n    parent_or_size[x] += parent_or_size[y];\n\
-    \    parent_or_size[y] = x;\n    return a;\n  }\n\n  bool same(const int a, const\
+    \    parent_or_size[y] = x;\n    return x;\n  }\n\n  bool same(const int a, const\
     \ int b) {\n    assert(0 <= a && a < _n);\n    assert(0 <= b && b < _n);\n   \
     \ return leader(a) == leader(b);\n  }\n\n  int leader(const int a) {\n    assert(0\
     \ <= a && a < _n);\n    if (parent_or_size[a] < 0)\n      return a;\n    parent_or_size[a]\
@@ -52,7 +52,7 @@ data:
   isVerificationFile: true
   path: test/Library_Checker/Data_Structure/Unionfind.test.cpp
   requiredBy: []
-  timestamp: '2026-10-17 00:37:03+09:00'
+  timestamp: '2026-10-17 01:09:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library_Checker/Data_Structure/Unionfind.test.cpp
