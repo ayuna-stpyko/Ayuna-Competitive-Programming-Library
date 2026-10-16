@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: persistent/persistentsegtree.hpp
     title: persistent/persistentsegtree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
@@ -157,7 +157,7 @@ data:
   path: test/Library_Checker/Data_Structure/Range_Kth_Smallest.test.cpp
   requiredBy: []
   timestamp: '2026-10-17 00:37:03+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library_Checker/Data_Structure/Range_Kth_Smallest.test.cpp
 layout: document

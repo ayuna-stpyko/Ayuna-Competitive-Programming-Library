@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Tree/Jump_on_Tree.test.cpp
     title: test/Library_Checker/Tree/Jump_on_Tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
     title: test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/lowestcommonancestor.hpp\"\n#include <algorithm>\n\
@@ -87,7 +87,7 @@ data:
   path: tree/lowestcommonancestor.hpp
   requiredBy: []
   timestamp: '2026-10-17 00:37:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library_Checker/Tree/Lowest_Common_Ancestor.test.cpp
   - test/Library_Checker/Tree/Jump_on_Tree.test.cpp

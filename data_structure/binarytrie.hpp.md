@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Data_Structure/Set_Xor_Min.test.cpp
     title: test/Library_Checker/Data_Structure/Set_Xor_Min.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/binarytrie.hpp\"\n\n#include <array>\n#include\
@@ -147,7 +147,7 @@ data:
   path: data_structure/binarytrie.hpp
   requiredBy: []
   timestamp: '2026-10-17 00:37:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library_Checker/Data_Structure/Set_Xor_Min.test.cpp
 documentation_of: data_structure/binarytrie.hpp

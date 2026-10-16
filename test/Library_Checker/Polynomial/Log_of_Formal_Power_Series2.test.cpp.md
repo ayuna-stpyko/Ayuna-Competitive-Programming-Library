@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/common.hpp
     title: fps/common.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/common_ntt.hpp
     title: fps/common_ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: math/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint_static.hpp
     title: math/modint_static.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
@@ -425,7 +425,7 @@ data:
   path: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
   requiredBy: []
   timestamp: '2026-10-17 00:37:03+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
 layout: document

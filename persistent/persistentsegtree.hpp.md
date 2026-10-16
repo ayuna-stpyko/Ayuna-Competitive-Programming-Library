@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Data_Structure/Range_Kth_Smallest.test.cpp
     title: test/Library_Checker/Data_Structure/Range_Kth_Smallest.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"persistent/persistentsegtree.hpp\"\n\n#include <algorithm>\n\
@@ -234,7 +234,7 @@ data:
   path: persistent/persistentsegtree.hpp
   requiredBy: []
   timestamp: '2026-10-17 00:37:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library_Checker/Data_Structure/Range_Kth_Smallest.test.cpp
 documentation_of: persistent/persistentsegtree.hpp

@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/common.hpp
     title: fps/common.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/convolution.hpp
     title: math/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint_static.hpp
     title: math/modint_static.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
     title: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
     title: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
     title: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series2.test.cpp
     title: test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/common_ntt.hpp\"\n\n#line 2 \"fps/common.hpp\"\n\n#line\
@@ -503,7 +503,7 @@ data:
   path: fps/common_ntt.hpp
   requiredBy: []
   timestamp: '2026-10-17 00:37:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series2.test.cpp
   - test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
