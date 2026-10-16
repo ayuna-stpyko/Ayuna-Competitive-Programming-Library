@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod_1000000007"
 
-#include <iostream>
-#include "math/modint_static.hpp"
 #include "fps/common.hpp"
+#include "math/modint_static.hpp"
+#include <iostream>
 
 using namespace std;
 
@@ -24,7 +24,8 @@ int main() {
   }
   a *= ayuna::FormalPowerSeries<ayuna::modint1000000007>(b);
   for (int i = 0; i < n + m - 1; i++) {
-    if (i) cout << " ";
+    if (i)
+      cout << " ";
     cout << a[i].val();
   }
   cout << endl;

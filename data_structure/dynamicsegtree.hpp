@@ -45,14 +45,14 @@ private:
   node_ptr root;
 
   void set(node_ptr &t, long long l, long long r, long long p, S x) {
-    if(t == nullptr)
+    if (t == nullptr)
       t = std::make_unique<node>();
-    if(r - l == 1) {
+    if (r - l == 1) {
       t->value = x;
       return;
     }
     long long m = (l + r) >> 1;
-    if(p < m)
+    if (p < m)
       set(t->left, l, m, p, x);
     else
       set(t->right, m, r, p, x);
@@ -61,12 +61,12 @@ private:
   }
 
   S get(const node_ptr &t, long long l, long long r, long long p) const {
-    if(t == nullptr)
+    if (t == nullptr)
       return e();
-    if(r - l == 1)
+    if (r - l == 1)
       return t->value;
     long long m = (l + r) >> 1;
-    if(p < m)
+    if (p < m)
       return get(t->left, l, m, p);
     else
       return get(t->right, m, r, p);
@@ -74,9 +74,9 @@ private:
 
   S prod(const node_ptr &t, long long l, long long r, long long ql,
          long long qr) const {
-    if(t == nullptr || r <= ql || qr <= l)
+    if (t == nullptr || r <= ql || qr <= l)
       return e();
-    if(ql <= l && r <= qr)
+    if (ql <= l && r <= qr)
       return t->value;
     long long m = (l + r) >> 1;
     return op(prod(t->left, l, m, ql, qr), prod(t->right, m, r, ql, qr));
@@ -84,9 +84,9 @@ private:
 
   void reset(node_ptr &t, long long l, long long r, long long ql,
              long long qr) {
-    if(t == nullptr || r <= ql || qr <= l)
+    if (t == nullptr || r <= ql || qr <= l)
       return;
-    if(ql <= l && r <= qr) {
+    if (ql <= l && r <= qr) {
       t.reset();
       return;
     }

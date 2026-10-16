@@ -1,8 +1,9 @@
-#include <vector>
-#include <tuple>
-#include <queue>
+#pragma once
 #include <algorithm>
 #include <cassert>
+#include <queue>
+#include <tuple>
+#include <vector>
 
 namespace ayuna {
 
@@ -19,8 +20,9 @@ public:
     build();
   }
 
-  void build(){
-    while ((1 << lg) < n) lg++;
+  void build() {
+    while ((1 << lg) < n)
+      lg++;
     parents.resize(lg + 1, std::vector<int>(n));
     std::queue<int> que;
     que.emplace(r);
@@ -29,7 +31,7 @@ public:
     while (!que.empty()) {
       int now = que.front();
       que.pop();
-      for(const int &to: graph[now]) {
+      for (const int &to : graph[now]) {
         if (depth[to] == inf) {
           depth[to] = depth[now] + 1;
           que.emplace(to);
@@ -47,11 +49,12 @@ public:
     }
   }
 
-  int lca(int a, int b){
+  int lca(int a, int b) {
     assert(0 <= a && a < n);
     assert(0 <= b && b < n);
 
-    if (depth[a] > depth[b]) std::swap(a, b);
+    if (depth[a] > depth[b])
+      std::swap(a, b);
     while (depth[a] != depth[b]) {
       for (int to = lg; to >= 0; to--) {
         if (depth[b] - (1 << to) >= depth[a]) {
@@ -60,7 +63,8 @@ public:
         }
       }
     }
-    if (a == b) return a;
+    if (a == b)
+      return a;
     for (int to = lg; to >= 0; to--) {
       if (parents[to][a] != parents[to][b]) {
         a = parents[to][a];
@@ -79,13 +83,15 @@ public:
   int la(int u, int k) {
     assert(0 <= u && u < n);
     assert(k >= 0);
-    if (depth[u] < k) return -1;
+    if (depth[u] < k)
+      return -1;
     for (int i = 0; i <= lg; i++) {
       if ((k >> i) & 1) {
         k -= (1 << i);
         u = parents[i][u];
       }
-      if (k == 0) break;
+      if (k == 0)
+        break;
     }
     return u;
   }
@@ -100,8 +106,10 @@ public:
     else {
       k -= (depth[u] - depth[l]);
       int d = depth[v] - depth[l];
-      if (d - k < 0) return -1;
-      else return la(v, d - k);
+      if (d - k < 0)
+        return -1;
+      else
+        return la(v, d - k);
     }
   }
 

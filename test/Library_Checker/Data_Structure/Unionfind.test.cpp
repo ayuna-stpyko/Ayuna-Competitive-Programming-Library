@@ -1,22 +1,25 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 
-#include <iostream>
 #include "data_structure/unionfind.hpp"
+#include <iostream>
 using namespace std;
 
-int main(){
+int main() {
   cin.tie(0);
   ios::sync_with_stdio(0);
   int n, q;
   cin >> n >> q;
   ayuna::UnionFind uf(n);
-  while(q--){
+  while (q--) {
     int t, u, v;
     cin >> t >> u >> v;
-    if (t){
-      if (uf.same(u, v)) cout << 1 << endl;
-      else cout << 0 << endl;
+    if (t) {
+      if (uf.same(u, v))
+        cout << 1 << endl;
+      else
+        cout << 0 << endl;
     }
-    else uf.merge(u, v);
+    else
+      uf.merge(u, v);
   }
 }

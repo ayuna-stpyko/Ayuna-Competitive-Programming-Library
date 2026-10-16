@@ -1,12 +1,12 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
-#include <iostream>
 #include "data_structure/segmenttree.hpp"
+#include <iostream>
 using namespace std;
 using ll = long long;
 
-ll op(ll a, ll b) { return a + b;}
-ll e() { return 0;}
+ll op(ll a, ll b) { return a + b; }
+ll e() { return 0; }
 
 int main() {
   cin.tie(0);
@@ -14,7 +14,8 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<ll> a(n);
-  for (ll &i: a) cin >> i;
+  for (ll &i : a)
+    cin >> i;
   ayuna::SegmentTree<ll, op, e> st(a);
   while (q--) {
     int num;
@@ -26,7 +27,6 @@ int main() {
       cin >> p >> x;
       st.set(p, st.get(p) + x);
       break;
-
     case 1:
       int l, r;
       cin >> l >> r;

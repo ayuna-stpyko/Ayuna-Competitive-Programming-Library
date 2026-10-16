@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/set_xor_min"
 
-#include <iostream>
 #include "data_structure/binarytrie.hpp"
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -14,10 +14,12 @@ int main() {
     int num, x;
     cin >> num >> x;
     if (num == 0) {
-      if (trie.count(x) == 0) trie.insert(x);
+      if (trie.count(x) == 0)
+        trie.insert(x);
     }
     else if (num == 1) {
-      if (trie.count(x) > 0) trie.erase(x);
+      if (trie.count(x) > 0)
+        trie.erase(x);
     }
     else {
       cout << trie.kth_element_xor(0, x) << endl;

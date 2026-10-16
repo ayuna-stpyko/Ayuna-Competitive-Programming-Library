@@ -19,7 +19,8 @@ struct BinaryTrie {
   void reserve(std::size_t n) {
     ch_.reserve(n);
     cnt_.reserve(n);
-    if constexpr (has_sum) sum_.reserve(n);
+    if constexpr (has_sum)
+      sum_.reserve(n);
   }
 
   void insert(T x) {
@@ -27,8 +28,10 @@ struct BinaryTrie {
     int t = 0;
     for (int b = bit_len - 1;; b--) {
       cnt_[t]++;
-      if constexpr (has_sum) sum_[t] += x & low_mask(b);
-      if (b < 0) return;
+      if constexpr (has_sum)
+        sum_[t] += x & low_mask(b);
+      if (b < 0)
+        return;
       const int c = get_bit(x, b);
       if (ch_[t][c] == -1) {
         const int u = new_node();
@@ -44,8 +47,10 @@ struct BinaryTrie {
     int t = 0;
     for (int b = bit_len - 1;; b--) {
       cnt_[t]--;
-      if constexpr (has_sum) sum_[t] -= x & low_mask(b);
-      if (b < 0) return;
+      if constexpr (has_sum)
+        sum_[t] -= x & low_mask(b);
+      if (b < 0)
+        return;
       const int c = get_bit(x, b);
       const int u = ch_[t][c];
       if (cnt_[u] == 1) {
@@ -62,7 +67,8 @@ struct BinaryTrie {
     int t = 0;
     for (int b = bit_len - 1; b >= 0; b--) {
       t = ch_[t][get_bit(x, b)];
-      if (t == -1) return 0;
+      if (t == -1)
+        return 0;
     }
     return cnt_[t];
   }
@@ -132,12 +138,14 @@ private:
       free_.pop_back();
       ch_[t] = {-1, -1};
       cnt_[t] = 0;
-      if constexpr (has_sum) sum_[t] = 0;
+      if constexpr (has_sum)
+        sum_[t] = 0;
       return t;
     }
     ch_.push_back({-1, -1});
     cnt_.push_back(0);
-    if constexpr (has_sum) sum_.push_back(0);
+    if constexpr (has_sum)
+      sum_.push_back(0);
     return static_cast<int>(ch_.size()) - 1;
   }
 
@@ -186,18 +194,22 @@ private:
   }
 
   T full_sum_xor(int t, T mask, int b) const {
-    if (t == -1 || b < 0) return 0;
-    if ((mask & low_mask(b)) == 0) return sum_[t];
+    if (t == -1 || b < 0)
+      return 0;
+    if ((mask & low_mask(b)) == 0)
+      return sum_[t];
     const int mb = get_bit(mask, b);
     const T bit_contribution = (T(1) << b) * static_cast<T>(mb ? cnt(ch_[t][0]) : cnt(ch_[t][1]));
     return bit_contribution + full_sum_xor(ch_[t][0], mask, b - 1) + full_sum_xor(ch_[t][1], mask, b - 1);
   }
 
   T sum_lt(int t, T x, T mask, int b) const {
-    if (t == -1 || b < 0) return 0;
+    if (t == -1 || b < 0)
+      return 0;
     const int xb = get_bit(x, b);
     const int c = get_bit(mask, b);
-    if (xb == 0) return sum_lt(ch_[t][c], x, mask, b - 1);
+    if (xb == 0)
+      return sum_lt(ch_[t][c], x, mask, b - 1);
     return full_sum_xor(ch_[t][c], mask, b - 1) +
            (T(1) << b) * static_cast<T>(count_lt(ch_[t][c ^ 1], x, mask, b - 1)) +
            sum_lt(ch_[t][c ^ 1], x, mask, b - 1);

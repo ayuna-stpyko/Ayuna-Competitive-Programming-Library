@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_kth_smallest"
 
+#include "persistent/persistentsegtree.hpp"
 #include <iostream>
 #include <map>
-#include "persistent/persistentsegtree.hpp"
 using namespace std;
 using ll = long long;
 
@@ -15,7 +15,8 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<ll> a(n);
-  for (ll &i : a) cin >> i;
+  for (ll &i : a)
+    cin >> i;
   map<ll, vector<int>> mp;
   vector<int> b(n);
   for (int i = 0; i < n; i++) {
@@ -24,7 +25,8 @@ int main() {
   int idx = 0;
   vector<ll> vals;
   for (auto &[k, v] : mp) {
-    for (ll i : v) b[i] = idx;
+    for (ll i : v)
+      b[i] = idx;
     vals.push_back(k);
     idx++;
   }

@@ -12,7 +12,8 @@ using ll = long long;
 using ull = unsigned long long;
 using u32 = unsigned int;
 
-template <int m> struct modint {
+template <int m>
+struct modint {
   using mint = modint;
 
 private:
@@ -23,7 +24,7 @@ public:
   template <class T, std::enable_if_t<std::is_integral_v<T>, int> = 0>
   constexpr modint(T v) {
     ll x = (ll)(v % (ll)(m));
-    if(x < 0)
+    if (x < 0)
       x += m;
     _v = (u32)(x);
   }
@@ -34,12 +35,12 @@ public:
 
   mint &operator++() {
     _v++;
-    if(_v == m)
+    if (_v == m)
       _v = 0;
     return *this;
   }
   mint &operator--() {
-    if(_v == 0)
+    if (_v == 0)
       _v = m;
     _v--;
     return *this;
@@ -57,13 +58,13 @@ public:
 
   mint &operator+=(const mint &r) {
     _v += r._v;
-    if(_v >= m)
+    if (_v >= m)
       _v -= m;
     return *this;
   }
   mint &operator-=(const mint &r) {
     _v -= r._v;
-    if(_v >= m)
+    if (_v >= m)
       _v += m;
     return *this;
   }
@@ -81,8 +82,8 @@ public:
   mint pow(ll n) const {
     assert(0 <= n);
     mint x = *this, r = 1;
-    while(n) {
-      if(n & 1)
+    while (n) {
+      if (n & 1)
         r *= x;
       x *= x;
       n >>= 1;
