@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/binarytrie.hpp
       title: data_structure/binarytrie.hpp
     - icon: ':heavy_check_mark:'
@@ -15,7 +15,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/trie.hpp
       title: data_structure/trie.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/unionfind.hpp
       title: data_structure/unionfind.hpp
   - name: fps
@@ -23,7 +23,7 @@ data:
     - icon: ':question:'
       path: fps/common.hpp
       title: fps/common.hpp
-    - icon: ':question:'
+    - icon: ':x:'
       path: fps/common_ntt.hpp
       title: fps/common_ntt.hpp
   - name: math
@@ -45,7 +45,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: persistent/persistentqueue.hpp
       title: persistent/persistentqueue.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: persistent/persistentsegtree.hpp
       title: persistent/persistentsegtree.hpp
     - icon: ':heavy_check_mark:'
@@ -96,36 +96,36 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
       title: test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Data_Structure/Range_Kth_Smallest.test.cpp
       title: test/Library_Checker/Data_Structure/Range_Kth_Smallest.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Data_Structure/Set_Xor_Min.test.cpp
       title: test/Library_Checker/Data_Structure/Set_Xor_Min.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Data_Structure/Unionfind.test.cpp
       title: test/Library_Checker/Data_Structure/Unionfind.test.cpp
   - name: test/Library_Checker/Polynomial
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series.test.cpp
       title: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
       title: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series.test.cpp
       title: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
       title: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series.test.cpp
       title: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
       title: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series.test.cpp
       title: test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series.test.cpp
     - icon: ':x:'

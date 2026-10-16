@@ -3,19 +3,19 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Library_Checker/Data_Structure/Range_Kth_Smallest.test.cpp
     title: test/Library_Checker/Data_Structure/Range_Kth_Smallest.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"persistent/persistentsegtree.hpp\"\n\n#include <algorithm>\n\
     #include <bit>\n#include <cassert>\n#include <cstddef>\n#include <vector>\n\n\
-    namespace ayuna {\n\ntemplate <class S, auto op, auto e>\nrequires requires(S\
-    \ a, S b) {\n  { op(a, b) } -> std::same_as<S>;\n  { e() } -> std::same_as<S>;\n\
-    }\nclass PersistentSegtree {\npublic:\n  PersistentSegtree() : PersistentSegtree(0,\
+    namespace ayuna {\n\ntemplate <class S, auto op, auto e>\n  requires requires(S\
+    \ a, S b) {\n    { op(a, b) } -> std::same_as<S>;\n    { e() } -> std::same_as<S>;\n\
+    \  }\nclass PersistentSegtree {\npublic:\n  PersistentSegtree() : PersistentSegtree(0,\
     \ empty_tag{}) {}\n\n  explicit PersistentSegtree(int n_) : PersistentSegtree(n_,\
     \ empty_tag{}) {\n    if (n == 0)\n      return;\n    root = alloc_leaf(e());\n\
     \    for (int d = 0; d < log; d++)\n      root = alloc_internal(root, root);\n\
@@ -44,10 +44,10 @@ data:
     \ <= l && l <= r && r <= n);\n    if (l == r)\n      return e();\n    return prod(root,\
     \ 0, 1u << log, static_cast<unsigned int>(l),\n                static_cast<unsigned\
     \ int>(r));\n  }\n\n  S all_prod() const { return root == -1 ? e() : pool[root].value;\
-    \ }\n\n  template <bool (*f)(S)> int max_right(int l) const {\n    return max_right(l,\
-    \ [](S x) { return f(x); });\n  }\n\n  template <class F> int max_right(int l,\
-    \ F f) const {\n    assert(0 <= l && l <= n);\n    assert(f(e()));\n    if (l\
-    \ == n)\n      return n;\n    S sum = e();\n    return std::min(n, static_cast<int>(max_right(\n\
+    \ }\n\n  template <bool (*f)(S)>\n  int max_right(int l) const {\n    return max_right(l,\
+    \ [](S x) { return f(x); });\n  }\n\n  template <class F>\n  int max_right(int\
+    \ l, F f) const {\n    assert(0 <= l && l <= n);\n    assert(f(e()));\n    if\
+    \ (l == n)\n      return n;\n    S sum = e();\n    return std::min(n, static_cast<int>(max_right(\n\
     \                           root, 0, 1u << log, static_cast<unsigned int>(l),\
     \ sum, f)));\n  }\n\n  template <class F>\n  int max_right_pair(int l, const PersistentSegtree\
     \ &other, F f) const {\n    assert(n == other.n);\n    assert(0 <= l && l <= n);\n\
@@ -55,10 +55,10 @@ data:
     \ other_sum = e();\n    return std::min(n, static_cast<int>(max_right_pair(\n\
     \                           root, other.root, 0, 1u << log,\n                \
     \           static_cast<unsigned int>(l), sum, other_sum, f)));\n  }\n\n  template\
-    \ <bool (*f)(S)> int min_left(int r) const {\n    return min_left(r, [](S x) {\
-    \ return f(x); });\n  }\n\n  template <class F> int min_left(int r, F f) const\
-    \ {\n    assert(0 <= r && r <= n);\n    assert(f(e()));\n    if (r == 0)\n   \
-    \   return 0;\n    S sum = e();\n    return static_cast<int>(\n        min_left(root,\
+    \ <bool (*f)(S)>\n  int min_left(int r) const {\n    return min_left(r, [](S x)\
+    \ { return f(x); });\n  }\n\n  template <class F>\n  int min_left(int r, F f)\
+    \ const {\n    assert(0 <= r && r <= n);\n    assert(f(e()));\n    if (r == 0)\n\
+    \      return 0;\n    S sum = e();\n    return static_cast<int>(\n        min_left(root,\
     \ 0, 1u << log, static_cast<unsigned int>(r), sum, f));\n  }\n\n  template <class\
     \ F>\n  int min_left_pair(int r, const PersistentSegtree &other, F f) const {\n\
     \    assert(n == other.n);\n    assert(0 <= r && r <= n);\n    assert(f(e(), e()));\n\
@@ -96,7 +96,7 @@ data:
     \ (res != m)\n      return res;\n    return max_right(pool[t].right, m, r, ql,\
     \ sum, f);\n  }\n\n  template <class F>\n  static unsigned int max_right_pair(int\
     \ t, int u, unsigned int l, unsigned int r,\n                                \
-    \ unsigned int ql, S &sum, S &other_sum, F f) {\n    if (r <= ql)\n      return\
+    \     unsigned int ql, S &sum, S &other_sum, F f) {\n    if (r <= ql)\n      return\
     \ r;\n    if (ql <= l) {\n      S x = op(sum, pool[t].value), y = op(other_sum,\
     \ pool[u].value);\n      if (f(x, y)) {\n        sum = x;\n        other_sum =\
     \ y;\n        return r;\n      }\n      if (r - l == 1)\n        return l;\n \
@@ -122,8 +122,8 @@ data:
     \ f);\n  }\n};\n\n} // namespace ayuna\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <bit>\n#include <cassert>\n\
     #include <cstddef>\n#include <vector>\n\nnamespace ayuna {\n\ntemplate <class\
-    \ S, auto op, auto e>\nrequires requires(S a, S b) {\n  { op(a, b) } -> std::same_as<S>;\n\
-    \  { e() } -> std::same_as<S>;\n}\nclass PersistentSegtree {\npublic:\n  PersistentSegtree()\
+    \ S, auto op, auto e>\n  requires requires(S a, S b) {\n    { op(a, b) } -> std::same_as<S>;\n\
+    \    { e() } -> std::same_as<S>;\n  }\nclass PersistentSegtree {\npublic:\n  PersistentSegtree()\
     \ : PersistentSegtree(0, empty_tag{}) {}\n\n  explicit PersistentSegtree(int n_)\
     \ : PersistentSegtree(n_, empty_tag{}) {\n    if (n == 0)\n      return;\n   \
     \ root = alloc_leaf(e());\n    for (int d = 0; d < log; d++)\n      root = alloc_internal(root,\
@@ -152,22 +152,22 @@ data:
     \ l, int r) const {\n    assert(0 <= l && l <= r && r <= n);\n    if (l == r)\n\
     \      return e();\n    return prod(root, 0, 1u << log, static_cast<unsigned int>(l),\n\
     \                static_cast<unsigned int>(r));\n  }\n\n  S all_prod() const {\
-    \ return root == -1 ? e() : pool[root].value; }\n\n  template <bool (*f)(S)> int\
-    \ max_right(int l) const {\n    return max_right(l, [](S x) { return f(x); });\n\
-    \  }\n\n  template <class F> int max_right(int l, F f) const {\n    assert(0 <=\
-    \ l && l <= n);\n    assert(f(e()));\n    if (l == n)\n      return n;\n    S\
-    \ sum = e();\n    return std::min(n, static_cast<int>(max_right(\n           \
-    \                root, 0, 1u << log, static_cast<unsigned int>(l), sum, f)));\n\
+    \ return root == -1 ? e() : pool[root].value; }\n\n  template <bool (*f)(S)>\n\
+    \  int max_right(int l) const {\n    return max_right(l, [](S x) { return f(x);\
+    \ });\n  }\n\n  template <class F>\n  int max_right(int l, F f) const {\n    assert(0\
+    \ <= l && l <= n);\n    assert(f(e()));\n    if (l == n)\n      return n;\n  \
+    \  S sum = e();\n    return std::min(n, static_cast<int>(max_right(\n        \
+    \                   root, 0, 1u << log, static_cast<unsigned int>(l), sum, f)));\n\
     \  }\n\n  template <class F>\n  int max_right_pair(int l, const PersistentSegtree\
     \ &other, F f) const {\n    assert(n == other.n);\n    assert(0 <= l && l <= n);\n\
     \    assert(f(e(), e()));\n    if (l == n)\n      return n;\n    S sum = e(),\
     \ other_sum = e();\n    return std::min(n, static_cast<int>(max_right_pair(\n\
     \                           root, other.root, 0, 1u << log,\n                \
     \           static_cast<unsigned int>(l), sum, other_sum, f)));\n  }\n\n  template\
-    \ <bool (*f)(S)> int min_left(int r) const {\n    return min_left(r, [](S x) {\
-    \ return f(x); });\n  }\n\n  template <class F> int min_left(int r, F f) const\
-    \ {\n    assert(0 <= r && r <= n);\n    assert(f(e()));\n    if (r == 0)\n   \
-    \   return 0;\n    S sum = e();\n    return static_cast<int>(\n        min_left(root,\
+    \ <bool (*f)(S)>\n  int min_left(int r) const {\n    return min_left(r, [](S x)\
+    \ { return f(x); });\n  }\n\n  template <class F>\n  int min_left(int r, F f)\
+    \ const {\n    assert(0 <= r && r <= n);\n    assert(f(e()));\n    if (r == 0)\n\
+    \      return 0;\n    S sum = e();\n    return static_cast<int>(\n        min_left(root,\
     \ 0, 1u << log, static_cast<unsigned int>(r), sum, f));\n  }\n\n  template <class\
     \ F>\n  int min_left_pair(int r, const PersistentSegtree &other, F f) const {\n\
     \    assert(n == other.n);\n    assert(0 <= r && r <= n);\n    assert(f(e(), e()));\n\
@@ -205,7 +205,7 @@ data:
     \ (res != m)\n      return res;\n    return max_right(pool[t].right, m, r, ql,\
     \ sum, f);\n  }\n\n  template <class F>\n  static unsigned int max_right_pair(int\
     \ t, int u, unsigned int l, unsigned int r,\n                                \
-    \ unsigned int ql, S &sum, S &other_sum, F f) {\n    if (r <= ql)\n      return\
+    \     unsigned int ql, S &sum, S &other_sum, F f) {\n    if (r <= ql)\n      return\
     \ r;\n    if (ql <= l) {\n      S x = op(sum, pool[t].value), y = op(other_sum,\
     \ pool[u].value);\n      if (f(x, y)) {\n        sum = x;\n        other_sum =\
     \ y;\n        return r;\n      }\n      if (r - l == 1)\n        return l;\n \
@@ -233,8 +233,8 @@ data:
   isVerificationFile: false
   path: persistent/persistentsegtree.hpp
   requiredBy: []
-  timestamp: '2026-10-16 03:26:46+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-10-17 00:37:03+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/Library_Checker/Data_Structure/Range_Kth_Smallest.test.cpp
 documentation_of: persistent/persistentsegtree.hpp

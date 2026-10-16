@@ -19,32 +19,31 @@ data:
     - https://judge.yosupo.jp/problem/persistent_range_affine_range_sum
   bundledCode: "#line 1 \"test/Library_Checker/Data_Structure/Persistent_Range_Affine_Range_Sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_range_affine_range_sum\"\
-    \n\n#include <iostream>\n#line 2 \"math/modint_static.hpp\"\n\n#include <cassert>\n\
-    #line 5 \"math/modint_static.hpp\"\n#include <numeric>\n#include <type_traits>\n\
-    #include <utility>\n\nnamespace ayuna {\n\nusing ll = long long;\nusing ull =\
-    \ unsigned long long;\nusing u32 = unsigned int;\n\ntemplate <int m> struct modint\
-    \ {\n  using mint = modint;\n\nprivate:\n  u32 _v;\n\npublic:\n  constexpr modint()\
-    \ : _v(0) {}\n  template <class T, std::enable_if_t<std::is_integral_v<T>, int>\
-    \ = 0>\n  constexpr modint(T v) {\n    ll x = (ll)(v % (ll)(m));\n    if(x < 0)\n\
-    \      x += m;\n    _v = (u32)(x);\n  }\n\n  u32 val() const { return _v; }\n\n\
-    \  static constexpr u32 mod() { return m; }\n\n  mint &operator++() {\n    _v++;\n\
-    \    if(_v == m)\n      _v = 0;\n    return *this;\n  }\n  mint &operator--()\
-    \ {\n    if(_v == 0)\n      _v = m;\n    _v--;\n    return *this;\n  }\n  mint\
-    \ operator++(int) {\n    mint result = *this;\n    ++*this;\n    return result;\n\
-    \  }\n  mint operator--(int) {\n    mint result = *this;\n    --*this;\n    return\
-    \ result;\n  }\n\n  mint &operator+=(const mint &r) {\n    _v += r._v;\n    if(_v\
-    \ >= m)\n      _v -= m;\n    return *this;\n  }\n  mint &operator-=(const mint\
-    \ &r) {\n    _v -= r._v;\n    if(_v >= m)\n      _v += m;\n    return *this;\n\
+    \n\n#line 2 \"math/modint_static.hpp\"\n\n#include <cassert>\n#include <iostream>\n\
+    #include <numeric>\n#include <type_traits>\n#include <utility>\n\nnamespace ayuna\
+    \ {\n\nusing ll = long long;\nusing ull = unsigned long long;\nusing u32 = unsigned\
+    \ int;\n\ntemplate <int m>\nstruct modint {\n  using mint = modint;\n\nprivate:\n\
+    \  u32 _v;\n\npublic:\n  constexpr modint() : _v(0) {}\n  template <class T, std::enable_if_t<std::is_integral_v<T>,\
+    \ int> = 0>\n  constexpr modint(T v) {\n    ll x = (ll)(v % (ll)(m));\n    if\
+    \ (x < 0)\n      x += m;\n    _v = (u32)(x);\n  }\n\n  u32 val() const { return\
+    \ _v; }\n\n  static constexpr u32 mod() { return m; }\n\n  mint &operator++()\
+    \ {\n    _v++;\n    if (_v == m)\n      _v = 0;\n    return *this;\n  }\n  mint\
+    \ &operator--() {\n    if (_v == 0)\n      _v = m;\n    _v--;\n    return *this;\n\
+    \  }\n  mint operator++(int) {\n    mint result = *this;\n    ++*this;\n    return\
+    \ result;\n  }\n  mint operator--(int) {\n    mint result = *this;\n    --*this;\n\
+    \    return result;\n  }\n\n  mint &operator+=(const mint &r) {\n    _v += r._v;\n\
+    \    if (_v >= m)\n      _v -= m;\n    return *this;\n  }\n  mint &operator-=(const\
+    \ mint &r) {\n    _v -= r._v;\n    if (_v >= m)\n      _v += m;\n    return *this;\n\
     \  }\n  mint &operator*=(const mint &r) {\n    ull z = _v;\n    z *= r._v;\n \
     \   _v = (u32)(z % m);\n    return *this;\n  }\n  mint &operator/=(const mint\
     \ &r) { return *this = *this * r.inv(); }\n\n  mint operator+() const { return\
     \ *this; }\n  mint operator-() const { return mint() - *this; }\n\n  mint pow(ll\
-    \ n) const {\n    assert(0 <= n);\n    mint x = *this, r = 1;\n    while(n) {\n\
-    \      if(n & 1)\n        r *= x;\n      x *= x;\n      n >>= 1;\n    }\n    return\
-    \ r;\n  }\n  mint inv() const {\n    assert(_v);\n    return pow(m - 2);\n  }\n\
-    \n  friend mint operator+(const mint &l, const mint &r) { return mint(l) += r;\
-    \ }\n  friend mint operator-(const mint &l, const mint &r) { return mint(l) -=\
-    \ r; }\n  friend mint operator*(const mint &l, const mint &r) { return mint(l)\
+    \ n) const {\n    assert(0 <= n);\n    mint x = *this, r = 1;\n    while (n) {\n\
+    \      if (n & 1)\n        r *= x;\n      x *= x;\n      n >>= 1;\n    }\n   \
+    \ return r;\n  }\n  mint inv() const {\n    assert(_v);\n    return pow(m - 2);\n\
+    \  }\n\n  friend mint operator+(const mint &l, const mint &r) { return mint(l)\
+    \ += r; }\n  friend mint operator-(const mint &l, const mint &r) { return mint(l)\
+    \ -= r; }\n  friend mint operator*(const mint &l, const mint &r) { return mint(l)\
     \ *= r; }\n  friend mint operator/(const mint &l, const mint &r) { return mint(l)\
     \ /= r; }\n  friend bool operator==(const mint &l, const mint &r) { return l._v\
     \ == r._v; }\n  friend bool operator!=(const mint &l, const mint &r) { return\
@@ -54,26 +53,27 @@ data:
     \ \"persistent/persistentlazysegtree.hpp\"\n\n#include <algorithm>\n#include <bit>\n\
     #line 6 \"persistent/persistentlazysegtree.hpp\"\n#include <concepts>\n#include\
     \ <cstddef>\n#include <vector>\n\nnamespace ayuna {\n\ntemplate <class S, auto\
-    \ op, auto e, class F, auto mapping, auto composition,\n         auto id>\nrequires\
-    \ requires(S a, S b, F f, F g) {\n  { op(a, b) } -> std::same_as<S>;\n  { e()\
-    \ } -> std::same_as<S>;\n  { mapping(f, a) } -> std::same_as<S>;\n  { composition(f,\
-    \ g) } -> std::same_as<F>;\n  { id() } -> std::same_as<F>;\n}\nclass PersistentLazySegtree\
-    \ {\n  static_assert(std::equality_comparable<F>,\n                \"F needs operator==\
-    \ (e.g. bool operator==(const F &) const = default;)\");\n\npublic:\n  PersistentLazySegtree()\
-    \ : PersistentLazySegtree(0, empty_tag{}) {}\n\n  explicit PersistentLazySegtree(int\
-    \ n_) : PersistentLazySegtree(n_, empty_tag{}) {\n    if (n == 0)\n      return;\n\
-    \    root = alloc_leaf(e());\n    for (unsigned int w = 1; w < len; w *= 2)\n\
-    \      root = alloc_internal(root, root);\n  }\n\n  explicit PersistentLazySegtree(const\
-    \ std::vector<S> &v)\n      : PersistentLazySegtree(static_cast<int>(v.size()),\
-    \ empty_tag{}) {\n    if (n == 0)\n      return;\n    std::vector<int> cur(len);\n\
-    \    int pad = n < static_cast<int>(len) ? alloc_leaf(e()) : -1;\n    for (int\
-    \ i = 0; i < static_cast<int>(len); i++)\n      cur[i] = i < n ? alloc_leaf(v[i])\
-    \ : pad;\n    while (cur.size() > 1) {\n      for (std::size_t i = 0; i < cur.size()\
-    \ / 2; i++)\n        cur[i] = alloc_internal(cur[2 * i], cur[2 * i + 1]);\n  \
-    \    cur.resize(cur.size() / 2);\n    }\n    root = cur[0];\n  }\n\n  int size()\
-    \ const { return n; }\n\n  S get(int k) const {\n    assert(0 <= k && k < n);\n\
-    \    return get(root, 0, len, static_cast<unsigned int>(k), id());\n  }\n\n  PersistentLazySegtree\
-    \ set(int k, const S &x) const {\n    assert(0 <= k && k < n);\n    PersistentLazySegtree\
+    \ op, auto e, class F, auto mapping, auto composition,\n          auto id>\n \
+    \ requires requires(S a, S b, F f, F g) {\n    { op(a, b) } -> std::same_as<S>;\n\
+    \    { e() } -> std::same_as<S>;\n    { mapping(f, a) } -> std::same_as<S>;\n\
+    \    { composition(f, g) } -> std::same_as<F>;\n    { id() } -> std::same_as<F>;\n\
+    \  }\nclass PersistentLazySegtree {\n  static_assert(std::equality_comparable<F>,\n\
+    \                \"F needs operator== (e.g. bool operator==(const F &) const =\
+    \ default;)\");\n\npublic:\n  PersistentLazySegtree() : PersistentLazySegtree(0,\
+    \ empty_tag{}) {}\n\n  explicit PersistentLazySegtree(int n_) : PersistentLazySegtree(n_,\
+    \ empty_tag{}) {\n    if (n == 0)\n      return;\n    root = alloc_leaf(e());\n\
+    \    for (unsigned int w = 1; w < len; w *= 2)\n      root = alloc_internal(root,\
+    \ root);\n  }\n\n  explicit PersistentLazySegtree(const std::vector<S> &v)\n \
+    \     : PersistentLazySegtree(static_cast<int>(v.size()), empty_tag{}) {\n   \
+    \ if (n == 0)\n      return;\n    std::vector<int> cur(len);\n    int pad = n\
+    \ < static_cast<int>(len) ? alloc_leaf(e()) : -1;\n    for (int i = 0; i < static_cast<int>(len);\
+    \ i++)\n      cur[i] = i < n ? alloc_leaf(v[i]) : pad;\n    while (cur.size()\
+    \ > 1) {\n      for (std::size_t i = 0; i < cur.size() / 2; i++)\n        cur[i]\
+    \ = alloc_internal(cur[2 * i], cur[2 * i + 1]);\n      cur.resize(cur.size() /\
+    \ 2);\n    }\n    root = cur[0];\n  }\n\n  int size() const { return n; }\n\n\
+    \  S get(int k) const {\n    assert(0 <= k && k < n);\n    return get(root, 0,\
+    \ len, static_cast<unsigned int>(k), id());\n  }\n\n  PersistentLazySegtree set(int\
+    \ k, const S &x) const {\n    assert(0 <= k && k < n);\n    PersistentLazySegtree\
     \ res(n, empty_tag{});\n    res.root = set(root, 0, len, static_cast<unsigned\
     \ int>(k), x, id());\n    return res;\n  }\n\n  PersistentLazySegtree apply(int\
     \ l, int r, const F &f) const {\n    assert(0 <= l && l <= r && r <= n);\n   \
@@ -88,20 +88,20 @@ data:
     \                      static_cast<unsigned int>(r), id(), id());\n    return\
     \ res;\n  }\n\n  S prod(int l, int r) const {\n    assert(0 <= l && l <= r &&\
     \ r <= n);\n    if (l == r)\n      return e();\n    return prod(root, 0, len,\
-    \ static_cast<unsigned int>(l),\n               static_cast<unsigned int>(r),\
+    \ static_cast<unsigned int>(l),\n                static_cast<unsigned int>(r),\
     \ id());\n  }\n\n  S all_prod() const { return root == -1 ? e() : pool[root].value;\
-    \ }\n\n  template <bool (*f)(S)> int max_right(int l) const {\n    return max_right(l,\
-    \ [](S x) { return f(x); });\n  }\n\n  template <class G> int max_right(int l,\
-    \ G g) const {\n    assert(0 <= l && l <= n);\n    assert(g(e()));\n    if (l\
-    \ == n)\n      return n;\n    S sum = e();\n    return std::min(n, static_cast<int>(max_right(root,\
+    \ }\n\n  template <bool (*f)(S)>\n  int max_right(int l) const {\n    return max_right(l,\
+    \ [](S x) { return f(x); });\n  }\n\n  template <class G>\n  int max_right(int\
+    \ l, G g) const {\n    assert(0 <= l && l <= n);\n    assert(g(e()));\n    if\
+    \ (l == n)\n      return n;\n    S sum = e();\n    return std::min(n, static_cast<int>(max_right(root,\
     \ 0, len,\n                                                  static_cast<unsigned\
     \ int>(l),\n                                                  sum, g, id())));\n\
-    \  }\n\n  template <bool (*f)(S)> int min_left(int r) const {\n    return min_left(r,\
-    \ [](S x) { return f(x); });\n  }\n\n  template <class G> int min_left(int r,\
-    \ G g) const {\n    assert(0 <= r && r <= n);\n    assert(g(e()));\n    if (r\
-    \ == 0)\n      return 0;\n    S sum = e();\n    return static_cast<int>(\n   \
-    \     min_left(root, 0, len, static_cast<unsigned int>(r), sum, g, id()));\n \
-    \ }\n\n  template <class G>\n  int max_right_pair(int l, const PersistentLazySegtree\
+    \  }\n\n  template <bool (*f)(S)>\n  int min_left(int r) const {\n    return min_left(r,\
+    \ [](S x) { return f(x); });\n  }\n\n  template <class G>\n  int min_left(int\
+    \ r, G g) const {\n    assert(0 <= r && r <= n);\n    assert(g(e()));\n    if\
+    \ (r == 0)\n      return 0;\n    S sum = e();\n    return static_cast<int>(\n\
+    \        min_left(root, 0, len, static_cast<unsigned int>(r), sum, g, id()));\n\
+    \  }\n\n  template <class G>\n  int max_right_pair(int l, const PersistentLazySegtree\
     \ &other, G g) const {\n    assert(n == other.n);\n    assert(0 <= l && l <= n);\n\
     \    assert(g(e(), e()));\n    if (l == n)\n      return n;\n    S sum = e(),\
     \ other_sum = e();\n    return std::min(n, static_cast<int>(max_right_pair(\n\
@@ -156,7 +156,7 @@ data:
     \    int left = assign(pool[dst].left, pool[src].left, l, m, ql, qr, gd, gs);\n\
     \    int right =\n        assign(pool[dst].right, pool[src].right, m, r, ql, qr,\
     \ gd, gs);\n    return alloc_internal(left, right);\n  }\n\n  static S prod(int\
-    \ t, unsigned int l, unsigned int r, unsigned int ql,\n               unsigned\
+    \ t, unsigned int l, unsigned int r, unsigned int ql,\n                unsigned\
     \ int qr, const F &f) {\n    if (r <= ql || qr <= l)\n      return e();\n    if\
     \ (ql <= l && r <= qr)\n      return mapping(f, pool[t].value);\n\n    unsigned\
     \ int m = (l + r) / 2;\n    F g = compose(f, pool[t].lazy);\n    return op(prod(pool[t].left,\
@@ -221,10 +221,10 @@ data:
     \ {\n      int l, r;\n      cin >> l >> r;\n      cout << history[k + 1].prod(l,\
     \ r).val.val() << '\\n';\n    }\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_range_affine_range_sum\"\
-    \n\n#include <iostream>\n#include \"math/modint_static.hpp\"\n#include \"persistent/persistentlazysegtree.hpp\"\
-    \nusing namespace std;\nusing mint = ayuna::modint998244353;\n\nstruct S {\n \
-    \ mint val;\n  mint len;\n};\n\nS op(S a, S b) {\n  a.val += b.val;\n  a.len +=\
-    \ b.len;\n  return a;\n}\nS e() {\n  return S(0, 0);\n}\nusing F = pair<mint,\
+    \n\n#include \"math/modint_static.hpp\"\n#include \"persistent/persistentlazysegtree.hpp\"\
+    \n#include <iostream>\nusing namespace std;\nusing mint = ayuna::modint998244353;\n\
+    \nstruct S {\n  mint val;\n  mint len;\n};\n\nS op(S a, S b) {\n  a.val += b.val;\n\
+    \  a.len += b.len;\n  return a;\n}\nS e() {\n  return S(0, 0);\n}\nusing F = pair<mint,\
     \ mint>;\nS mapping(F f, S x) {\n  x.val = f.first * x.val + f.second * x.len;\n\
     \  return x;\n}\nF composition(F f, F g) {\n  return make_pair(f.first * g.first,\
     \ f.first * g.second + f.second);\n}\nF id() {\n  return make_pair(1, 0);\n}\n\
@@ -245,7 +245,7 @@ data:
   isVerificationFile: true
   path: test/Library_Checker/Data_Structure/Persistent_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2026-10-16 03:26:46+09:00'
+  timestamp: '2026-10-17 00:37:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library_Checker/Data_Structure/Persistent_Range_Affine_Range_Sum.test.cpp

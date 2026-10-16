@@ -5,7 +5,7 @@ data:
   - icon: ':question:'
     path: fps/common.hpp
     title: fps/common.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: fps/common_ntt.hpp
     title: fps/common_ntt.hpp
   - icon: ':question:'
@@ -24,25 +24,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Library_Checker/Data_Structure/Persistent_Range_Affine_Range_Sum.test.cpp
     title: test/Library_Checker/Data_Structure/Persistent_Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
     title: test/Library_Checker/Polynomial/Exp_of_Formal_Power_Series2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series.test.cpp
     title: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
     title: test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
     title: test/Library_Checker/Polynomial/Log_of_Formal_Power_Series2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/Library_Checker/Polynomial/Pow_of_Formal_Power_Series.test.cpp
   - icon: ':x:'
@@ -56,24 +56,24 @@ data:
   bundledCode: "#line 2 \"math/modint_static.hpp\"\n\n#include <cassert>\n#include\
     \ <iostream>\n#include <numeric>\n#include <type_traits>\n#include <utility>\n\
     \nnamespace ayuna {\n\nusing ll = long long;\nusing ull = unsigned long long;\n\
-    using u32 = unsigned int;\n\ntemplate <int m> struct modint {\n  using mint =\
+    using u32 = unsigned int;\n\ntemplate <int m>\nstruct modint {\n  using mint =\
     \ modint;\n\nprivate:\n  u32 _v;\n\npublic:\n  constexpr modint() : _v(0) {}\n\
     \  template <class T, std::enable_if_t<std::is_integral_v<T>, int> = 0>\n  constexpr\
-    \ modint(T v) {\n    ll x = (ll)(v % (ll)(m));\n    if(x < 0)\n      x += m;\n\
+    \ modint(T v) {\n    ll x = (ll)(v % (ll)(m));\n    if (x < 0)\n      x += m;\n\
     \    _v = (u32)(x);\n  }\n\n  u32 val() const { return _v; }\n\n  static constexpr\
-    \ u32 mod() { return m; }\n\n  mint &operator++() {\n    _v++;\n    if(_v == m)\n\
-    \      _v = 0;\n    return *this;\n  }\n  mint &operator--() {\n    if(_v == 0)\n\
-    \      _v = m;\n    _v--;\n    return *this;\n  }\n  mint operator++(int) {\n\
-    \    mint result = *this;\n    ++*this;\n    return result;\n  }\n  mint operator--(int)\
+    \ u32 mod() { return m; }\n\n  mint &operator++() {\n    _v++;\n    if (_v ==\
+    \ m)\n      _v = 0;\n    return *this;\n  }\n  mint &operator--() {\n    if (_v\
+    \ == 0)\n      _v = m;\n    _v--;\n    return *this;\n  }\n  mint operator++(int)\
+    \ {\n    mint result = *this;\n    ++*this;\n    return result;\n  }\n  mint operator--(int)\
     \ {\n    mint result = *this;\n    --*this;\n    return result;\n  }\n\n  mint\
-    \ &operator+=(const mint &r) {\n    _v += r._v;\n    if(_v >= m)\n      _v -=\
+    \ &operator+=(const mint &r) {\n    _v += r._v;\n    if (_v >= m)\n      _v -=\
     \ m;\n    return *this;\n  }\n  mint &operator-=(const mint &r) {\n    _v -= r._v;\n\
-    \    if(_v >= m)\n      _v += m;\n    return *this;\n  }\n  mint &operator*=(const\
+    \    if (_v >= m)\n      _v += m;\n    return *this;\n  }\n  mint &operator*=(const\
     \ mint &r) {\n    ull z = _v;\n    z *= r._v;\n    _v = (u32)(z % m);\n    return\
     \ *this;\n  }\n  mint &operator/=(const mint &r) { return *this = *this * r.inv();\
     \ }\n\n  mint operator+() const { return *this; }\n  mint operator-() const {\
     \ return mint() - *this; }\n\n  mint pow(ll n) const {\n    assert(0 <= n);\n\
-    \    mint x = *this, r = 1;\n    while(n) {\n      if(n & 1)\n        r *= x;\n\
+    \    mint x = *this, r = 1;\n    while (n) {\n      if (n & 1)\n        r *= x;\n\
     \      x *= x;\n      n >>= 1;\n    }\n    return r;\n  }\n  mint inv() const\
     \ {\n    assert(_v);\n    return pow(m - 2);\n  }\n\n  friend mint operator+(const\
     \ mint &l, const mint &r) { return mint(l) += r; }\n  friend mint operator-(const\
@@ -88,28 +88,28 @@ data:
   code: "#pragma once\n\n#include <cassert>\n#include <iostream>\n#include <numeric>\n\
     #include <type_traits>\n#include <utility>\n\nnamespace ayuna {\n\nusing ll =\
     \ long long;\nusing ull = unsigned long long;\nusing u32 = unsigned int;\n\ntemplate\
-    \ <int m> struct modint {\n  using mint = modint;\n\nprivate:\n  u32 _v;\n\npublic:\n\
-    \  constexpr modint() : _v(0) {}\n  template <class T, std::enable_if_t<std::is_integral_v<T>,\
-    \ int> = 0>\n  constexpr modint(T v) {\n    ll x = (ll)(v % (ll)(m));\n    if(x\
-    \ < 0)\n      x += m;\n    _v = (u32)(x);\n  }\n\n  u32 val() const { return _v;\
-    \ }\n\n  static constexpr u32 mod() { return m; }\n\n  mint &operator++() {\n\
-    \    _v++;\n    if(_v == m)\n      _v = 0;\n    return *this;\n  }\n  mint &operator--()\
-    \ {\n    if(_v == 0)\n      _v = m;\n    _v--;\n    return *this;\n  }\n  mint\
-    \ operator++(int) {\n    mint result = *this;\n    ++*this;\n    return result;\n\
-    \  }\n  mint operator--(int) {\n    mint result = *this;\n    --*this;\n    return\
-    \ result;\n  }\n\n  mint &operator+=(const mint &r) {\n    _v += r._v;\n    if(_v\
-    \ >= m)\n      _v -= m;\n    return *this;\n  }\n  mint &operator-=(const mint\
-    \ &r) {\n    _v -= r._v;\n    if(_v >= m)\n      _v += m;\n    return *this;\n\
+    \ <int m>\nstruct modint {\n  using mint = modint;\n\nprivate:\n  u32 _v;\n\n\
+    public:\n  constexpr modint() : _v(0) {}\n  template <class T, std::enable_if_t<std::is_integral_v<T>,\
+    \ int> = 0>\n  constexpr modint(T v) {\n    ll x = (ll)(v % (ll)(m));\n    if\
+    \ (x < 0)\n      x += m;\n    _v = (u32)(x);\n  }\n\n  u32 val() const { return\
+    \ _v; }\n\n  static constexpr u32 mod() { return m; }\n\n  mint &operator++()\
+    \ {\n    _v++;\n    if (_v == m)\n      _v = 0;\n    return *this;\n  }\n  mint\
+    \ &operator--() {\n    if (_v == 0)\n      _v = m;\n    _v--;\n    return *this;\n\
+    \  }\n  mint operator++(int) {\n    mint result = *this;\n    ++*this;\n    return\
+    \ result;\n  }\n  mint operator--(int) {\n    mint result = *this;\n    --*this;\n\
+    \    return result;\n  }\n\n  mint &operator+=(const mint &r) {\n    _v += r._v;\n\
+    \    if (_v >= m)\n      _v -= m;\n    return *this;\n  }\n  mint &operator-=(const\
+    \ mint &r) {\n    _v -= r._v;\n    if (_v >= m)\n      _v += m;\n    return *this;\n\
     \  }\n  mint &operator*=(const mint &r) {\n    ull z = _v;\n    z *= r._v;\n \
     \   _v = (u32)(z % m);\n    return *this;\n  }\n  mint &operator/=(const mint\
     \ &r) { return *this = *this * r.inv(); }\n\n  mint operator+() const { return\
     \ *this; }\n  mint operator-() const { return mint() - *this; }\n\n  mint pow(ll\
-    \ n) const {\n    assert(0 <= n);\n    mint x = *this, r = 1;\n    while(n) {\n\
-    \      if(n & 1)\n        r *= x;\n      x *= x;\n      n >>= 1;\n    }\n    return\
-    \ r;\n  }\n  mint inv() const {\n    assert(_v);\n    return pow(m - 2);\n  }\n\
-    \n  friend mint operator+(const mint &l, const mint &r) { return mint(l) += r;\
-    \ }\n  friend mint operator-(const mint &l, const mint &r) { return mint(l) -=\
-    \ r; }\n  friend mint operator*(const mint &l, const mint &r) { return mint(l)\
+    \ n) const {\n    assert(0 <= n);\n    mint x = *this, r = 1;\n    while (n) {\n\
+    \      if (n & 1)\n        r *= x;\n      x *= x;\n      n >>= 1;\n    }\n   \
+    \ return r;\n  }\n  mint inv() const {\n    assert(_v);\n    return pow(m - 2);\n\
+    \  }\n\n  friend mint operator+(const mint &l, const mint &r) { return mint(l)\
+    \ += r; }\n  friend mint operator-(const mint &l, const mint &r) { return mint(l)\
+    \ -= r; }\n  friend mint operator*(const mint &l, const mint &r) { return mint(l)\
     \ *= r; }\n  friend mint operator/(const mint &l, const mint &r) { return mint(l)\
     \ /= r; }\n  friend bool operator==(const mint &l, const mint &r) { return l._v\
     \ == r._v; }\n  friend bool operator!=(const mint &l, const mint &r) { return\
@@ -123,7 +123,7 @@ data:
   - fps/common_ntt.hpp
   - fps/common.hpp
   - math/convolution.hpp
-  timestamp: '2026-05-07 00:37:36+09:00'
+  timestamp: '2026-10-17 00:37:03+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Library_Checker/Polynomial/Inv_of_Formal_Power_Series.test.cpp

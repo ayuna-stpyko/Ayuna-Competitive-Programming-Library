@@ -27,21 +27,21 @@ data:
     \n  struct node {\n    S value;\n    node_ptr left, right;\n    node() : value(e()),\
     \ left(nullptr), right(nullptr) {}\n    node(S v) : value(v), left(nullptr), right(nullptr)\
     \ {}\n  };\n\n  long long n;\n  node_ptr root;\n\n  void set(node_ptr &t, long\
-    \ long l, long long r, long long p, S x) {\n    if(t == nullptr)\n      t = std::make_unique<node>();\n\
-    \    if(r - l == 1) {\n      t->value = x;\n      return;\n    }\n    long long\
-    \ m = (l + r) >> 1;\n    if(p < m)\n      set(t->left, l, m, p, x);\n    else\n\
+    \ long l, long long r, long long p, S x) {\n    if (t == nullptr)\n      t = std::make_unique<node>();\n\
+    \    if (r - l == 1) {\n      t->value = x;\n      return;\n    }\n    long long\
+    \ m = (l + r) >> 1;\n    if (p < m)\n      set(t->left, l, m, p, x);\n    else\n\
     \      set(t->right, m, r, p, x);\n    t->value =\n        op(t->left ? t->left->value\
     \ : e(), t->right ? t->right->value : e());\n  }\n\n  S get(const node_ptr &t,\
-    \ long long l, long long r, long long p) const {\n    if(t == nullptr)\n     \
-    \ return e();\n    if(r - l == 1)\n      return t->value;\n    long long m = (l\
-    \ + r) >> 1;\n    if(p < m)\n      return get(t->left, l, m, p);\n    else\n \
-    \     return get(t->right, m, r, p);\n  }\n\n  S prod(const node_ptr &t, long\
-    \ long l, long long r, long long ql,\n         long long qr) const {\n    if(t\
-    \ == nullptr || r <= ql || qr <= l)\n      return e();\n    if(ql <= l && r <=\
+    \ long long l, long long r, long long p) const {\n    if (t == nullptr)\n    \
+    \  return e();\n    if (r - l == 1)\n      return t->value;\n    long long m =\
+    \ (l + r) >> 1;\n    if (p < m)\n      return get(t->left, l, m, p);\n    else\n\
+    \      return get(t->right, m, r, p);\n  }\n\n  S prod(const node_ptr &t, long\
+    \ long l, long long r, long long ql,\n         long long qr) const {\n    if (t\
+    \ == nullptr || r <= ql || qr <= l)\n      return e();\n    if (ql <= l && r <=\
     \ qr)\n      return t->value;\n    long long m = (l + r) >> 1;\n    return op(prod(t->left,\
     \ l, m, ql, qr), prod(t->right, m, r, ql, qr));\n  }\n\n  void reset(node_ptr\
     \ &t, long long l, long long r, long long ql,\n             long long qr) {\n\
-    \    if(t == nullptr || r <= ql || qr <= l)\n      return;\n    if(ql <= l &&\
+    \    if (t == nullptr || r <= ql || qr <= l)\n      return;\n    if (ql <= l &&\
     \ r <= qr) {\n      t.reset();\n      return;\n    }\n    long long m = (l + r)\
     \ >> 1;\n    reset(t->left, l, m, ql, qr);\n    reset(t->right, m, r, ql, qr);\n\
     \    t->value =\n        op(t->left ? t->left->value : e(), t->right ? t->right->value\
@@ -59,21 +59,21 @@ data:
     \    S value;\n    node_ptr left, right;\n    node() : value(e()), left(nullptr),\
     \ right(nullptr) {}\n    node(S v) : value(v), left(nullptr), right(nullptr) {}\n\
     \  };\n\n  long long n;\n  node_ptr root;\n\n  void set(node_ptr &t, long long\
-    \ l, long long r, long long p, S x) {\n    if(t == nullptr)\n      t = std::make_unique<node>();\n\
-    \    if(r - l == 1) {\n      t->value = x;\n      return;\n    }\n    long long\
-    \ m = (l + r) >> 1;\n    if(p < m)\n      set(t->left, l, m, p, x);\n    else\n\
+    \ l, long long r, long long p, S x) {\n    if (t == nullptr)\n      t = std::make_unique<node>();\n\
+    \    if (r - l == 1) {\n      t->value = x;\n      return;\n    }\n    long long\
+    \ m = (l + r) >> 1;\n    if (p < m)\n      set(t->left, l, m, p, x);\n    else\n\
     \      set(t->right, m, r, p, x);\n    t->value =\n        op(t->left ? t->left->value\
     \ : e(), t->right ? t->right->value : e());\n  }\n\n  S get(const node_ptr &t,\
-    \ long long l, long long r, long long p) const {\n    if(t == nullptr)\n     \
-    \ return e();\n    if(r - l == 1)\n      return t->value;\n    long long m = (l\
-    \ + r) >> 1;\n    if(p < m)\n      return get(t->left, l, m, p);\n    else\n \
-    \     return get(t->right, m, r, p);\n  }\n\n  S prod(const node_ptr &t, long\
-    \ long l, long long r, long long ql,\n         long long qr) const {\n    if(t\
-    \ == nullptr || r <= ql || qr <= l)\n      return e();\n    if(ql <= l && r <=\
+    \ long long l, long long r, long long p) const {\n    if (t == nullptr)\n    \
+    \  return e();\n    if (r - l == 1)\n      return t->value;\n    long long m =\
+    \ (l + r) >> 1;\n    if (p < m)\n      return get(t->left, l, m, p);\n    else\n\
+    \      return get(t->right, m, r, p);\n  }\n\n  S prod(const node_ptr &t, long\
+    \ long l, long long r, long long ql,\n         long long qr) const {\n    if (t\
+    \ == nullptr || r <= ql || qr <= l)\n      return e();\n    if (ql <= l && r <=\
     \ qr)\n      return t->value;\n    long long m = (l + r) >> 1;\n    return op(prod(t->left,\
     \ l, m, ql, qr), prod(t->right, m, r, ql, qr));\n  }\n\n  void reset(node_ptr\
     \ &t, long long l, long long r, long long ql,\n             long long qr) {\n\
-    \    if(t == nullptr || r <= ql || qr <= l)\n      return;\n    if(ql <= l &&\
+    \    if (t == nullptr || r <= ql || qr <= l)\n      return;\n    if (ql <= l &&\
     \ r <= qr) {\n      t.reset();\n      return;\n    }\n    long long m = (l + r)\
     \ >> 1;\n    reset(t->left, l, m, ql, qr);\n    reset(t->right, m, r, ql, qr);\n\
     \    t->value =\n        op(t->left ? t->left->value : e(), t->right ? t->right->value\
@@ -82,7 +82,7 @@ data:
   isVerificationFile: false
   path: data_structure/dynamicsegtree.hpp
   requiredBy: []
-  timestamp: '2026-05-07 01:17:17+09:00'
+  timestamp: '2026-10-17 00:37:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library_Checker/Data_Structure/Point_Set_Range_Composite2.test.cpp

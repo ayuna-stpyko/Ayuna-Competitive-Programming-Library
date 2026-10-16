@@ -14,10 +14,10 @@ data:
   bundledCode: "#line 2 \"persistent/persistentlazysegtree.hpp\"\n\n#include <algorithm>\n\
     #include <bit>\n#include <cassert>\n#include <concepts>\n#include <cstddef>\n\
     #include <vector>\n\nnamespace ayuna {\n\ntemplate <class S, auto op, auto e,\
-    \ class F, auto mapping, auto composition,\n         auto id>\nrequires requires(S\
-    \ a, S b, F f, F g) {\n  { op(a, b) } -> std::same_as<S>;\n  { e() } -> std::same_as<S>;\n\
-    \  { mapping(f, a) } -> std::same_as<S>;\n  { composition(f, g) } -> std::same_as<F>;\n\
-    \  { id() } -> std::same_as<F>;\n}\nclass PersistentLazySegtree {\n  static_assert(std::equality_comparable<F>,\n\
+    \ class F, auto mapping, auto composition,\n          auto id>\n  requires requires(S\
+    \ a, S b, F f, F g) {\n    { op(a, b) } -> std::same_as<S>;\n    { e() } -> std::same_as<S>;\n\
+    \    { mapping(f, a) } -> std::same_as<S>;\n    { composition(f, g) } -> std::same_as<F>;\n\
+    \    { id() } -> std::same_as<F>;\n  }\nclass PersistentLazySegtree {\n  static_assert(std::equality_comparable<F>,\n\
     \                \"F needs operator== (e.g. bool operator==(const F &) const =\
     \ default;)\");\n\npublic:\n  PersistentLazySegtree() : PersistentLazySegtree(0,\
     \ empty_tag{}) {}\n\n  explicit PersistentLazySegtree(int n_) : PersistentLazySegtree(n_,\
@@ -48,20 +48,20 @@ data:
     \                      static_cast<unsigned int>(r), id(), id());\n    return\
     \ res;\n  }\n\n  S prod(int l, int r) const {\n    assert(0 <= l && l <= r &&\
     \ r <= n);\n    if (l == r)\n      return e();\n    return prod(root, 0, len,\
-    \ static_cast<unsigned int>(l),\n               static_cast<unsigned int>(r),\
+    \ static_cast<unsigned int>(l),\n                static_cast<unsigned int>(r),\
     \ id());\n  }\n\n  S all_prod() const { return root == -1 ? e() : pool[root].value;\
-    \ }\n\n  template <bool (*f)(S)> int max_right(int l) const {\n    return max_right(l,\
-    \ [](S x) { return f(x); });\n  }\n\n  template <class G> int max_right(int l,\
-    \ G g) const {\n    assert(0 <= l && l <= n);\n    assert(g(e()));\n    if (l\
-    \ == n)\n      return n;\n    S sum = e();\n    return std::min(n, static_cast<int>(max_right(root,\
+    \ }\n\n  template <bool (*f)(S)>\n  int max_right(int l) const {\n    return max_right(l,\
+    \ [](S x) { return f(x); });\n  }\n\n  template <class G>\n  int max_right(int\
+    \ l, G g) const {\n    assert(0 <= l && l <= n);\n    assert(g(e()));\n    if\
+    \ (l == n)\n      return n;\n    S sum = e();\n    return std::min(n, static_cast<int>(max_right(root,\
     \ 0, len,\n                                                  static_cast<unsigned\
     \ int>(l),\n                                                  sum, g, id())));\n\
-    \  }\n\n  template <bool (*f)(S)> int min_left(int r) const {\n    return min_left(r,\
-    \ [](S x) { return f(x); });\n  }\n\n  template <class G> int min_left(int r,\
-    \ G g) const {\n    assert(0 <= r && r <= n);\n    assert(g(e()));\n    if (r\
-    \ == 0)\n      return 0;\n    S sum = e();\n    return static_cast<int>(\n   \
-    \     min_left(root, 0, len, static_cast<unsigned int>(r), sum, g, id()));\n \
-    \ }\n\n  template <class G>\n  int max_right_pair(int l, const PersistentLazySegtree\
+    \  }\n\n  template <bool (*f)(S)>\n  int min_left(int r) const {\n    return min_left(r,\
+    \ [](S x) { return f(x); });\n  }\n\n  template <class G>\n  int min_left(int\
+    \ r, G g) const {\n    assert(0 <= r && r <= n);\n    assert(g(e()));\n    if\
+    \ (r == 0)\n      return 0;\n    S sum = e();\n    return static_cast<int>(\n\
+    \        min_left(root, 0, len, static_cast<unsigned int>(r), sum, g, id()));\n\
+    \  }\n\n  template <class G>\n  int max_right_pair(int l, const PersistentLazySegtree\
     \ &other, G g) const {\n    assert(n == other.n);\n    assert(0 <= l && l <= n);\n\
     \    assert(g(e(), e()));\n    if (l == n)\n      return n;\n    S sum = e(),\
     \ other_sum = e();\n    return std::min(n, static_cast<int>(max_right_pair(\n\
@@ -116,7 +116,7 @@ data:
     \    int left = assign(pool[dst].left, pool[src].left, l, m, ql, qr, gd, gs);\n\
     \    int right =\n        assign(pool[dst].right, pool[src].right, m, r, ql, qr,\
     \ gd, gs);\n    return alloc_internal(left, right);\n  }\n\n  static S prod(int\
-    \ t, unsigned int l, unsigned int r, unsigned int ql,\n               unsigned\
+    \ t, unsigned int l, unsigned int r, unsigned int ql,\n                unsigned\
     \ int qr, const F &f) {\n    if (r <= ql || qr <= l)\n      return e();\n    if\
     \ (ql <= l && r <= qr)\n      return mapping(f, pool[t].value);\n\n    unsigned\
     \ int m = (l + r) / 2;\n    F g = compose(f, pool[t].lazy);\n    return op(prod(pool[t].left,\
@@ -166,10 +166,10 @@ data:
   code: "#pragma once\n\n#include <algorithm>\n#include <bit>\n#include <cassert>\n\
     #include <concepts>\n#include <cstddef>\n#include <vector>\n\nnamespace ayuna\
     \ {\n\ntemplate <class S, auto op, auto e, class F, auto mapping, auto composition,\n\
-    \         auto id>\nrequires requires(S a, S b, F f, F g) {\n  { op(a, b) } ->\
-    \ std::same_as<S>;\n  { e() } -> std::same_as<S>;\n  { mapping(f, a) } -> std::same_as<S>;\n\
-    \  { composition(f, g) } -> std::same_as<F>;\n  { id() } -> std::same_as<F>;\n\
-    }\nclass PersistentLazySegtree {\n  static_assert(std::equality_comparable<F>,\n\
+    \          auto id>\n  requires requires(S a, S b, F f, F g) {\n    { op(a, b)\
+    \ } -> std::same_as<S>;\n    { e() } -> std::same_as<S>;\n    { mapping(f, a)\
+    \ } -> std::same_as<S>;\n    { composition(f, g) } -> std::same_as<F>;\n    {\
+    \ id() } -> std::same_as<F>;\n  }\nclass PersistentLazySegtree {\n  static_assert(std::equality_comparable<F>,\n\
     \                \"F needs operator== (e.g. bool operator==(const F &) const =\
     \ default;)\");\n\npublic:\n  PersistentLazySegtree() : PersistentLazySegtree(0,\
     \ empty_tag{}) {}\n\n  explicit PersistentLazySegtree(int n_) : PersistentLazySegtree(n_,\
@@ -200,20 +200,20 @@ data:
     \                      static_cast<unsigned int>(r), id(), id());\n    return\
     \ res;\n  }\n\n  S prod(int l, int r) const {\n    assert(0 <= l && l <= r &&\
     \ r <= n);\n    if (l == r)\n      return e();\n    return prod(root, 0, len,\
-    \ static_cast<unsigned int>(l),\n               static_cast<unsigned int>(r),\
+    \ static_cast<unsigned int>(l),\n                static_cast<unsigned int>(r),\
     \ id());\n  }\n\n  S all_prod() const { return root == -1 ? e() : pool[root].value;\
-    \ }\n\n  template <bool (*f)(S)> int max_right(int l) const {\n    return max_right(l,\
-    \ [](S x) { return f(x); });\n  }\n\n  template <class G> int max_right(int l,\
-    \ G g) const {\n    assert(0 <= l && l <= n);\n    assert(g(e()));\n    if (l\
-    \ == n)\n      return n;\n    S sum = e();\n    return std::min(n, static_cast<int>(max_right(root,\
+    \ }\n\n  template <bool (*f)(S)>\n  int max_right(int l) const {\n    return max_right(l,\
+    \ [](S x) { return f(x); });\n  }\n\n  template <class G>\n  int max_right(int\
+    \ l, G g) const {\n    assert(0 <= l && l <= n);\n    assert(g(e()));\n    if\
+    \ (l == n)\n      return n;\n    S sum = e();\n    return std::min(n, static_cast<int>(max_right(root,\
     \ 0, len,\n                                                  static_cast<unsigned\
     \ int>(l),\n                                                  sum, g, id())));\n\
-    \  }\n\n  template <bool (*f)(S)> int min_left(int r) const {\n    return min_left(r,\
-    \ [](S x) { return f(x); });\n  }\n\n  template <class G> int min_left(int r,\
-    \ G g) const {\n    assert(0 <= r && r <= n);\n    assert(g(e()));\n    if (r\
-    \ == 0)\n      return 0;\n    S sum = e();\n    return static_cast<int>(\n   \
-    \     min_left(root, 0, len, static_cast<unsigned int>(r), sum, g, id()));\n \
-    \ }\n\n  template <class G>\n  int max_right_pair(int l, const PersistentLazySegtree\
+    \  }\n\n  template <bool (*f)(S)>\n  int min_left(int r) const {\n    return min_left(r,\
+    \ [](S x) { return f(x); });\n  }\n\n  template <class G>\n  int min_left(int\
+    \ r, G g) const {\n    assert(0 <= r && r <= n);\n    assert(g(e()));\n    if\
+    \ (r == 0)\n      return 0;\n    S sum = e();\n    return static_cast<int>(\n\
+    \        min_left(root, 0, len, static_cast<unsigned int>(r), sum, g, id()));\n\
+    \  }\n\n  template <class G>\n  int max_right_pair(int l, const PersistentLazySegtree\
     \ &other, G g) const {\n    assert(n == other.n);\n    assert(0 <= l && l <= n);\n\
     \    assert(g(e(), e()));\n    if (l == n)\n      return n;\n    S sum = e(),\
     \ other_sum = e();\n    return std::min(n, static_cast<int>(max_right_pair(\n\
@@ -268,7 +268,7 @@ data:
     \    int left = assign(pool[dst].left, pool[src].left, l, m, ql, qr, gd, gs);\n\
     \    int right =\n        assign(pool[dst].right, pool[src].right, m, r, ql, qr,\
     \ gd, gs);\n    return alloc_internal(left, right);\n  }\n\n  static S prod(int\
-    \ t, unsigned int l, unsigned int r, unsigned int ql,\n               unsigned\
+    \ t, unsigned int l, unsigned int r, unsigned int ql,\n                unsigned\
     \ int qr, const F &f) {\n    if (r <= ql || qr <= l)\n      return e();\n    if\
     \ (ql <= l && r <= qr)\n      return mapping(f, pool[t].value);\n\n    unsigned\
     \ int m = (l + r) / 2;\n    F g = compose(f, pool[t].lazy);\n    return op(prod(pool[t].left,\
@@ -319,7 +319,7 @@ data:
   isVerificationFile: false
   path: persistent/persistentlazysegtree.hpp
   requiredBy: []
-  timestamp: '2026-10-16 03:26:46+09:00'
+  timestamp: '2026-10-17 00:37:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library_Checker/Data_Structure/Persistent_Range_Affine_Range_Sum.test.cpp
