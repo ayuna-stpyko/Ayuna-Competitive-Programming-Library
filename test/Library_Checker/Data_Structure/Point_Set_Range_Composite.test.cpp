@@ -1,13 +1,13 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
 
-#include <iostream>
 #include "data_structure/segmenttree.hpp"
+#include <iostream>
 using namespace std;
 using ll = long long;
 
 constexpr ll m93 = 998244353ll;
-pair<ll, ll> op(pair<ll, ll> a, pair<ll, ll> b) { return make_pair(a.first * b.first % m93, (a.second * b.first % m93 + b.second) % m93);}
-pair<ll, ll> e() { return make_pair(1ll, 0ll);}
+pair<ll, ll> op(pair<ll, ll> a, pair<ll, ll> b) { return make_pair(a.first * b.first % m93, (a.second * b.first % m93 + b.second) % m93); }
+pair<ll, ll> e() { return make_pair(1ll, 0ll); }
 
 int main() {
   cin.tie(0);
@@ -24,21 +24,21 @@ int main() {
     int num;
     cin >> num;
     switch (num) {
-      case 0:{
-        int p;
-        ll c, d;
-        cin >> p >> c >> d;
-        st.set(p, make_pair(c, d));
-        break;
-      }
-      case 1:{
-        int l, r;
-        ll x;
-        cin >> l >> r >> x;
-        auto [c, d] = st.prod(l, r);
-        cout << (c * x % m93 + d) % m93 << endl;
-        break;
-      }
+    case 0: {
+      int p;
+      ll c, d;
+      cin >> p >> c >> d;
+      st.set(p, make_pair(c, d));
+      break;
+    }
+    case 1: {
+      int l, r;
+      ll x;
+      cin >> l >> r >> x;
+      auto [c, d] = st.prod(l, r);
+      cout << (c * x % m93 + d) % m93 << endl;
+      break;
+    }
     }
   }
 }

@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/persistent_queue"
 
+#include "persistent/persistentqueue.hpp"
 #include <iostream>
 #include <vector>
-#include "persistent/persistentqueue.hpp"
 using namespace std;
 using ll = long long;
 

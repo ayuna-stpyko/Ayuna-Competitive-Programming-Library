@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/bitwise_and_convolution"
 
-#include <iostream>
 #include "math/convolution.hpp"
 #include "math/modint_static.hpp"
+#include <iostream>
 
 using namespace std;
 
@@ -23,7 +23,8 @@ int main() {
     b[i] = k;
   }
   auto c = ayuna::and_convolution(a, b);
-  for (int i = 0; i < (int)c.size(); i++) cout << c[i] << " ";
+  for (int i = 0; i < (int)c.size(); i++)
+    cout << c[i] << " ";
   cout << endl;
   return 0;
 }

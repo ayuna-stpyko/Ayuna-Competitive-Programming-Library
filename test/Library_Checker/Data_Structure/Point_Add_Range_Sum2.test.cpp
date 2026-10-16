@@ -1,13 +1,13 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
+#include "data_structure/dynamicsegtree.hpp"
 #include <iostream>
 #include <vector>
-#include "data_structure/dynamicsegtree.hpp"
 using namespace std;
 using ll = long long;
 
-ll op(ll a, ll b) { return a + b;}
-ll e() { return 0;}
+ll op(ll a, ll b) { return a + b; }
+ll e() { return 0; }
 
 int main() {
   cin.tie(0);
@@ -15,9 +15,11 @@ int main() {
   int n, q;
   cin >> n >> q;
   vector<ll> a(n);
-  for (ll &i: a) cin >> i;
+  for (ll &i : a)
+    cin >> i;
   ayuna::DynamicSegmentTree<ll, op, e> st(n);
-  for (int i = 0; i < n; i++) st.set(i, a[i]);
+  for (int i = 0; i < n; i++)
+    st.set(i, a[i]);
   while (q--) {
     int num;
     cin >> num;
@@ -28,7 +30,6 @@ int main() {
       cin >> p >> x;
       st.set(p, st.get(p) + x);
       break;
-
     case 1:
       int l, r;
       cin >> l >> r;

@@ -10,14 +10,14 @@
 namespace ayuna {
 
 template <class S, auto op, auto e, class F, auto mapping, auto composition,
-         auto id>
-requires requires(S a, S b, F f, F g) {
-  { op(a, b) } -> std::same_as<S>;
-  { e() } -> std::same_as<S>;
-  { mapping(f, a) } -> std::same_as<S>;
-  { composition(f, g) } -> std::same_as<F>;
-  { id() } -> std::same_as<F>;
-}
+          auto id>
+  requires requires(S a, S b, F f, F g) {
+    { op(a, b) } -> std::same_as<S>;
+    { e() } -> std::same_as<S>;
+    { mapping(f, a) } -> std::same_as<S>;
+    { composition(f, g) } -> std::same_as<F>;
+    { id() } -> std::same_as<F>;
+  }
 class PersistentLazySegtree {
   static_assert(std::equality_comparable<F>,
                 "F needs operator== (e.g. bool operator==(const F &) const = default;)");
@@ -92,16 +92,18 @@ public:
     if (l == r)
       return e();
     return prod(root, 0, len, static_cast<unsigned int>(l),
-               static_cast<unsigned int>(r), id());
+                static_cast<unsigned int>(r), id());
   }
 
   S all_prod() const { return root == -1 ? e() : pool[root].value; }
 
-  template <bool (*f)(S)> int max_right(int l) const {
+  template <bool (*f)(S)>
+  int max_right(int l) const {
     return max_right(l, [](S x) { return f(x); });
   }
 
-  template <class G> int max_right(int l, G g) const {
+  template <class G>
+  int max_right(int l, G g) const {
     assert(0 <= l && l <= n);
     assert(g(e()));
     if (l == n)
@@ -112,11 +114,13 @@ public:
                                                   sum, g, id())));
   }
 
-  template <bool (*f)(S)> int min_left(int r) const {
+  template <bool (*f)(S)>
+  int min_left(int r) const {
     return min_left(r, [](S x) { return f(x); });
   }
 
-  template <class G> int min_left(int r, G g) const {
+  template <class G>
+  int min_left(int r, G g) const {
     assert(0 <= r && r <= n);
     assert(g(e()));
     if (r == 0)
@@ -277,7 +281,7 @@ private:
   }
 
   static S prod(int t, unsigned int l, unsigned int r, unsigned int ql,
-               unsigned int qr, const F &f) {
+                unsigned int qr, const F &f) {
     if (r <= ql || qr <= l)
       return e();
     if (ql <= l && r <= qr)

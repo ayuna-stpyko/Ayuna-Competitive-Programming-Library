@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/log_of_formal_power_series"
 
-#include <iostream>
 #include "fps/common.hpp"
 #include "math/modint_static.hpp"
+#include <iostream>
 
 using namespace std;
 
@@ -19,7 +19,8 @@ int main() {
   }
   auto g = f.log();
   for (int i = 0; i < n; i++) {
-    if (i) cout << " ";
+    if (i)
+      cout << " ";
     cout << g[i].val();
   }
   cout << endl;

@@ -49,14 +49,16 @@ struct Trie {
       }
       path.push_back(u);
     }
-    for (const int t : path) nodes_[t].exist++;
+    for (const int t : path)
+      nodes_[t].exist++;
     Node &last = nodes_[path.back()];
     last.accept++;
     entry_id_.push_back(id);
     entry_next_.push_back(last.head);
     last.head = static_cast<int>(entry_id_.size()) - 1;
     if (f) {
-      for (auto it = path.rbegin(); it != path.rend(); ++it) f(&nodes_[*it]);
+      for (auto it = path.rbegin(); it != path.rend(); ++it)
+        f(&nodes_[*it]);
     }
     word_count_++;
     return id;
@@ -69,13 +71,16 @@ struct Trie {
     std::vector<int> path;
     path.reserve(s.size() + 1);
     path.push_back(0);
-    for (const char ch : s) path.push_back(nodes_[path.back()].nxt[to_index(ch)]);
-    for (const int t : path) nodes_[t].exist--;
+    for (const char ch : s)
+      path.push_back(nodes_[path.back()].nxt[to_index(ch)]);
+    for (const int t : path)
+      nodes_[t].exist--;
     Node &last = nodes_[path.back()];
     last.accept--;
     last.head = entry_next_[last.head];
     if (f) {
-      for (auto it = path.rbegin(); it != path.rend(); ++it) f(&nodes_[*it]);
+      for (auto it = path.rbegin(); it != path.rend(); ++it)
+        f(&nodes_[*it]);
     }
   }
 
@@ -93,21 +98,24 @@ struct Trie {
 
   void query(const std::string &s, const std::function<void(int)> &f) const {
     for (const int t : prefix_path(s)) {
-      for (const int idx : accept_ids(&nodes_[t])) f(idx);
+      for (const int idx : accept_ids(&nodes_[t]))
+        f(idx);
     }
   }
 
   void query_post(const std::string &s, const std::function<void(int)> &f) const {
     const std::vector<int> path = prefix_path(s);
     for (auto it = path.rbegin(); it != path.rend(); ++it) {
-      for (const int idx : accept_ids(&nodes_[*it])) f(idx);
+      for (const int idx : accept_ids(&nodes_[*it]))
+        f(idx);
     }
   }
 
   std::vector<int> accept_ids(const Node *t) const {
     std::vector<int> res;
     res.reserve(t->accept);
-    for (int e = t->head; e != -1; e = entry_next_[e]) res.push_back(entry_id_[e]);
+    for (int e = t->head; e != -1; e = entry_next_[e])
+      res.push_back(entry_id_[e]);
     std::reverse(res.begin(), res.end());
     return res;
   }
@@ -116,7 +124,8 @@ struct Trie {
     std::vector<std::pair<int, int>> st{{0, 0}};
     while (!st.empty()) {
       auto &[t, c] = st.back();
-      while (c < char_size && nodes_[t].nxt[c] == -1) c++;
+      while (c < char_size && nodes_[t].nxt[c] == -1)
+        c++;
       if (c == char_size) {
         f(&nodes_[t]);
         st.pop_back();
@@ -150,9 +159,11 @@ private:
     int t = 0;
     for (const char ch : s) {
       const int c = static_cast<int>(ch) - base;
-      if (c < 0 || c >= char_size) return -1;
+      if (c < 0 || c >= char_size)
+        return -1;
       t = nodes_[t].nxt[c];
-      if (t == -1) return -1;
+      if (t == -1)
+        return -1;
     }
     return t;
   }
@@ -161,7 +172,8 @@ private:
     std::vector<int> path{0};
     for (const char ch : s) {
       const int c = static_cast<int>(ch) - base;
-      if (c < 0 || c >= char_size || nodes_[path.back()].nxt[c] == -1) break;
+      if (c < 0 || c >= char_size || nodes_[path.back()].nxt[c] == -1)
+        break;
       path.push_back(nodes_[path.back()].nxt[c]);
     }
     return path;

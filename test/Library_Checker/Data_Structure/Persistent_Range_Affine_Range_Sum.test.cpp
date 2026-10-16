@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/persistent_range_affine_range_sum"
 
-#include <iostream>
 #include "math/modint_static.hpp"
 #include "persistent/persistentlazysegtree.hpp"
+#include <iostream>
 using namespace std;
 using mint = ayuna::modint998244353;
 

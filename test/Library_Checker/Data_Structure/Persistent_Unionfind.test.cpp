@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/persistent_unionfind"
 
+#include "persistent/persistentunionfind.hpp"
 #include <iostream>
 #include <vector>
-#include "persistent/persistentunionfind.hpp"
 using namespace std;
 
 int main() {

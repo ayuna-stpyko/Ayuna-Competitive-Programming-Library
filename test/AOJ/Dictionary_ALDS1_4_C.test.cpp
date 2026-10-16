@@ -1,6 +1,6 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_4_C"
-#include <iostream>
 #include "data_structure/trie.hpp"
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -12,10 +12,13 @@ int main() {
   while (n--) {
     string s, t;
     cin >> s >> t;
-    if (s == "insert") trie.add(t);
+    if (s == "insert")
+      trie.add(t);
     else {
-      if (trie.exist(t)) cout << "yes\n";
-      else cout << "no\n";
+      if (trie.exist(t))
+        cout << "yes\n";
+      else
+        cout << "no\n";
     }
   }
 }
